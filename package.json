@@ -1,0 +1,19 @@
+{
+  "name": "@norn/non-framework",
+  "version": "0.1.0",
+  "description": "Framework for the NoN Frontend",
+  "main": "src/framework.module.ts",
+  "typings": "src/framework.model.ts",
+  "peerDependencies": {
+    "angular": "1.5.5",
+    "angular-ui-router": "0.3.0",
+    "angular-aria": "1.5.5",
+    "angular-animate": "1.5.5",
+    "angular-material": "1.0.8",
+    "jquery": "2.2.3",
+    "lodash": "4.11.2"
+  },
+  "devDependencies": {
+    "typings": "0.7.12"
+  }
+}
