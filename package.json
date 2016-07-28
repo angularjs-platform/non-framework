@@ -4,6 +4,9 @@
   "description": "Framework for the NoN Frontend",
   "main": "src/framework.module.ts",
   "typings": "src/framework.model.ts",
+  "scripts" : {
+      "install-typings": "typings install"
+  },
   "peerDependencies": {
     "angular": "1.5.5",
     "angular-ui-router": "0.3.0",
