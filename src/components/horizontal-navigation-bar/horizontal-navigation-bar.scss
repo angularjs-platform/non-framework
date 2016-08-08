@@ -1,0 +1,18 @@
+non-horizontal-navigation-bar {
+    .md-menu-bar-button{
+        margin: 0;
+        outline: none;
+        &:hover {
+            /* TODO: Remove the dependency on Color. Needs to be moved into a theme*/
+            background-color: rgba(158,158,158,0.2);
+        }
+    }
+
+    md-menu-bar button {
+        margin-left: 5px;
+    }
+
+    &.spread md-menu-bar button {
+        padding: 0 30px;
+    }
+}
