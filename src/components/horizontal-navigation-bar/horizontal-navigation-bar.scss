@@ -1,10 +1,13 @@
+// TODO:G Move to a theme
+$horizontal-navigation-bar-hover-background: rgba(158, 158, 158, .2);
+
 non-horizontal-navigation-bar {
-    .md-menu-bar-button{
+    .md-menu-bar-button {
         margin: 0;
         outline: none;
+
         &:hover {
-            /* TODO: Remove the dependency on Color. Needs to be moved into a theme*/
-            background-color: rgba(158,158,158,0.2);
+            background-color: $horizontal-navigation-bar-hover-background;
         }
     }
 
