@@ -1,4 +1,4 @@
-export type menuItem {
+export type menuItem = {
     id: string,
     title: string,
     url: string,
