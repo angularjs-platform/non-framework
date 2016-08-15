@@ -12,6 +12,7 @@
     "jquery": "registry:dt/jquery#1.10.0+20160704162008",
     "lodash": "registry:dt/lodash#4.14.0+20160802150749",
     "node": "registry:dt/node#6.0.0+20160805072842",
-    "ui-grid": "registry:dt/ui-grid#0.0.0+20160810092313"
+    "ui-grid": "registry:dt/ui-grid#0.0.0+20160810092313",
+    "angular-formly": "registry:dt/angular-formly#7.2.3+20160316171810"
   }
 }
