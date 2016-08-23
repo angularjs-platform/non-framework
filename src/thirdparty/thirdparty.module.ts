@@ -5,7 +5,7 @@ declare const MobileDetect: any;
 
 angular.module(moduleName,
                 [ 'ui.router', 'ngAria', 'ngAnimate', 'ngMaterial', 'angular-loading-bar', 'ngCookies', 'ngMaterialSidemenu',
-                    'ngMessages', 'ngResource', 'ngSanitize', 'pascalprecht.translate'])
+                    'ngMessages', 'ngResource', 'ngSanitize', 'pascalprecht.translate', 'ui.grid'])
     .constant('PerfectScrollbar', PerfectScrollbar)
     .constant('MobileDetect', MobileDetect);
 
