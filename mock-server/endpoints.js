@@ -26,38 +26,32 @@ function config(req, res, next) {
                 {
                     "id": "main",
                     "menuList": [{
-                            "id": "menu-one",
-                            "title": "Top Menu One",
-                            "ref": "menu-one-ref"
+                            "id": "menu-customer-mgmt",
+                            "title": "Customer Management",
+                            "ref": "menu-customer-mgmt-ref"
                         },
                         {
-                            "id": "menu-two",
-                            "title": "Top Menu Two",
-                            "url": "menu-two-ref"
-                        },
-                        {
-                            "id": "menu-three",
-                            "title": "Top Menu Three",
-                            "url": "menu-three-ref"
+                            "id": "menu-bank-mgmt",
+                            "title": "Bank Management",
+                            "ref": "menu-bank-mgmt-ref"
                         }
                     ]
                 },
                 {
-                    "id": "menu-one-ref",
+                    "id": "menu-customer-mgmt-ref",
                     "menuList": [{
-                            "id": "menu-one-one",
-                            "title": "Menu One One",
-                            "url": "menu-one-one-ref"
-                        },
-                        {
-                            "id": "menu-one-two",
-                            "title": "Menu One Two",
-                            "url": "/menuOneTwo"
-                        },
-                        {
-                            "id": "menu-one-three",
-                            "title": "Menu One Three",
-                            "url": "menu-one-three-ref"
+                            "id": "menu-customer-mgmt-list",
+                            "title": "List",
+                            "url": "#/customer/list"
+                        }
+                    ]
+                },
+                {
+                    "id": "menu-bank-mgmt-ref",
+                    "menuList": [{
+                            "id": "menu-bank-mgmt-list",
+                            "title": "List",
+                            "url": "#/bank/list"
                         }
                     ]
                 }
