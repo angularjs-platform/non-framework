@@ -23,7 +23,7 @@
             </md-menu-item>
         </md-menu-content>
     </md-menu>
-    <button ng-repeat-end ng-if="first.url" class="md-menu-bar-button">{{first.title}}</button>
+    <button ng-if="first.url" ng-repeat-end class="md-menu-bar-button"><a href="{{first.url}}">{{first.title}}</a></button>
 </md-menu-bar>
 
 
