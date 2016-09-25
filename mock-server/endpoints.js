@@ -43,6 +43,11 @@ function config(req, res, next) {
                             "id": "menu-customer-mgmt-list",
                             "title": "List",
                             "url": "#/customer/list"
+                        },
+                        {
+                            "id": "menu-customer-mgmt-create",
+                            "title": "Create",
+                            "url": "#/customer/create"
                         }
                     ]
                 },
@@ -52,6 +57,11 @@ function config(req, res, next) {
                             "id": "menu-bank-mgmt-list",
                             "title": "List",
                             "url": "#/bank/list"
+                        },
+                        {
+                            "id": "menu-bank-mgmt-create",
+                            "title": "Create",
+                            "url": "#/bank/create"
                         }
                     ]
                 }

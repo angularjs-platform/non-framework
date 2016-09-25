@@ -9,6 +9,11 @@ non-horizontal-navigation-bar {
         &:hover {
             background-color: $horizontal-navigation-bar-hover-background;
         }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
     }
 
     md-menu-bar button {

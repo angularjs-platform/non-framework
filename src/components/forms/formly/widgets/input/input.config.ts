@@ -14,7 +14,7 @@ export class FormlyConfig {
                     readonly: false
                 },
                 ngModelAttrs: {
-                    'md-maxlength': {
+                    maxlength: {
                         bound: 'md-maxlength'
                     },
                     step: {
@@ -37,6 +37,10 @@ export class FormlyConfig {
                         disabled: check.oneOfType([ check.string, check.bool.optional]).optional,
                         readonly: check.oneOfType([ check.string, check.bool.optional]).optional,
                         maxlength: check.number.optional,
+                        minlength: check.number.optional,
+                        min: check.number.optional,
+                        max: check.number.optional,
+                        required: check.oneOfType([ check.string, check.bool.optional]).optional,
                         type: check.string,
                         step: check.number.optional,
                         pattern: check.oneOfType([ check.string, check.instanceOf(RegExp)]).optional
