@@ -12,10 +12,12 @@ export interface GridOptions extends uiGrid.IGridOptions {
 export interface GridColumn extends uiGrid.IColumnDef {
     labelKey: string;
     type?: string;
-    options?: ButtonOptions;
+    options?: ButtonOptions[];
 }
 
 export type ButtonOptions = {
     action: string;
     buttonLabel: string;
+    type?: string;
+    icon?: string;
 }
