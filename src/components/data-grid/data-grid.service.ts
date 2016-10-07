@@ -2,6 +2,12 @@ import { IDataGridService, GridColumn, ButtonOptions } from './data-grid';
 
 export class DataGridService implements IDataGridService {
 
+    private iconsByType: any = {
+        view: 'eye',
+        edit: 'pencil',
+        delete: 'delete'
+    };
+
     constructor(private $translate: ng.translate.ITranslateService) {
         'ngInject';
     }
@@ -30,11 +36,30 @@ export class DataGridService implements IDataGridService {
         });
     };
 
-    private buildButtonTemplate = (buttonOptions: ButtonOptions): string => {
+    private buildButtonTemplate = (buttonOptions: ButtonOptions[]): string => {
+        let template: string = '';
 
-        let template: string = '<md-button class="md-raised md-primary" ng-click="grid.appScope.' +
-                                    buttonOptions.action + '(row.entity)">' +
-                                    this.getTranslatedValue(buttonOptions.buttonLabel) + '</md-button>';
+        buttonOptions.forEach((option: any): any => {
+
+            let icon: any = option.icon;
+
+            if (icon === undefined) {
+                let type: any = option.type;
+
+                if (type !== undefined) {
+                    icon = this.iconsByType[type];
+                }
+            }
+
+            if (icon === undefined) {
+                icon = 'magnify';
+            }
+
+            template = template + ' <md-button class="md-icon-button" ng-click="grid.appScope.' +
+                                    option.action + '(row.entity)"> ' +
+                                    '<md-icon md-svg-icon="' + icon + '" class="icon" aria-label=' +
+                                    this.getTranslatedValue(option.buttonLabel) + '></md-icon></md-button> ';
+        });
         return template;
 
     };
