@@ -8,30 +8,24 @@ export class FormlyConfig {
             template: require('./select.tpl'),
             wrapper: ['mdLabel', 'validationMessages', 'mdInputContainer'],
             defaultOptions: {
-                templateOptions: {
-                    disabled: false
-                },
                 ngModelAttrs: {
                     disabled: {
                         bound: 'ng-disabled'
                     },
-                    onClose: {
-                        statement: 'md-on-close'
-                    },
-                    onOpen: {
-                        statement: 'md-on-open'
+                    readonly: {
+                        bound: 'ng-disabled'
                     }
                 }
             },
             apiCheck: (check: any): any => ({
                 templateOptions: {
                     disabled: check.bool.optional,
+                    readonly: check.bool.optional,
+                    required: check.bool.optional,
                     options: check.arrayOf(check.object),
                     multiple: check.bool.optional,
                     labelProp: check.string.optional,
                     valueProp: check.string.optional,
-                    onClose: check.func.optional,
-                    onOpen: check.func.optional,
                     theme: check.string.optional
                 }
             })

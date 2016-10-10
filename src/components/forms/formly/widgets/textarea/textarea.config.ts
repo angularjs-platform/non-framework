@@ -8,28 +8,32 @@ export class FormlyConfig {
             template: require('./textarea.tpl'),
             wrapper: ['mdLabel', 'validationMessages', 'mdInputContainer'],
             defaultOptions: {
+                templateOptions: {
+                    rows: 3
+                },
                 ngModelAttrs: {
                     disabled: {
                         bound: 'ng-disabled'
                     },
+                    readonly: {
+                        bound: 'ng-readonly'
+                    },
+                    maxlength: {
+                        bound: 'md-maxlength'
+                    },
                     rows: {
                         attribute: 'rows'
-                    },
-                    cols: {
-                        attribute: 'cols'
                     }
-                },
-                templateOptions: {
-                    grow: true
                 }
             },
             apiCheck: (check: any): any => ({
                 templateOptions: {
                     disabled: check.bool.optional,
-                    rows: check.number.optional,
-                    cols: check.number.optional,
-                    grow: check.bool.optional,
-                    theme: check.string.optional
+                    readonly: check.bool.optional,
+                    maxlength: check.number.optional,
+                    minlength: check.number.optional,
+                    required: check.bool.optional,
+                    rows: check.number.optional
                 }
             })
         });
