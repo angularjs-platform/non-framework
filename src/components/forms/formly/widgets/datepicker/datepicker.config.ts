@@ -6,13 +6,14 @@ export class FormlyConfig {
         this.formlyConfigProvider.setType({
             name: 'datepicker',
             template: require('./datepicker.tpl'),
-            wrapper: ['mdLabel', 'validationMessages'],
+            wrapper: ['mdLabel', 'validationMessages', 'mdInputContainer'],
             defaultOptions: {
-                templateOptions: {
-                    disabled: false
-                },
                 ngModelAttrs: {
                     disabled: {
+                        bound: 'ng-disabled'
+                    },
+                    // TODO:G datepicker doesnt support readonly so we are making it disabled and styling it to look like readonly. It can still hold a value.
+                    readonly: {
                         bound: 'ng-disabled'
                     },
                     placeholder: {
@@ -32,6 +33,8 @@ export class FormlyConfig {
             apiCheck: (check: any): any => ({
                 templateOptions: {
                     disabled: check.bool.optional,
+                    readonly: check.bool.optional,
+                    required: check.bool.optional,
                     placeholder: check.string.optional,
                     minDate: check.instanceOf(Date).optional,
                     maxDate: check.instanceOf(Date).optional,

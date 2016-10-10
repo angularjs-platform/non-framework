@@ -21,7 +21,7 @@ export class FormlyConfig {
             },
             apiCheck: (check: any): any => ({
                 templateOptions: {
-                    disabled: check.oneOfType([ check.string, check.bool.optional]).optional,
+                    disabled: check.bool.optional,
                     trueValue: check.oneOfType([ check.string, check.number, check.bool.optional]).optional,
                     falseValue: check.oneOfType([ check.string, check.number, check.bool.optional]).optional,
                     theme: check.string.optional

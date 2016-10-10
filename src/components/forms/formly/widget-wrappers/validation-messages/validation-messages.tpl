@@ -20,4 +20,9 @@
 
     <!-- Input URL Field -->
     <div ng-message="url" translate>FIELD_NOT_URL</div>
+
+    <!-- Date Field -->
+    <div ng-message="valid" translate>FIELD_NOT_DATE</div>
+    <div ng-message="mindate" translate>FIELD_MIN_DATE_NEEDED</div>
+    <div ng-message="maxdate" translate>FIELD_MAX_DATE_EXCEEDED</div>
 </div>
