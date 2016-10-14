@@ -22,50 +22,50 @@ function config(req, res, next) {
     else {
         loggedIn = true;
         res.json({
-            primaryMenuList: [
-                {
-                    "id": "main",
-                    "menuList": [{
-                            "id": "menu-customer-mgmt",
-                            "title": "Customer Management",
-                            "ref": "menu-customer-mgmt-ref"
-                        },
-                        {
-                            "id": "menu-bank-mgmt",
-                            "title": "Bank Management",
-                            "ref": "menu-bank-mgmt-ref"
-                        }
-                    ]
-                },
-                {
-                    "id": "menu-customer-mgmt-ref",
-                    "menuList": [{
-                            "id": "menu-customer-mgmt-list",
-                            "title": "List",
-                            "url": "#/customer/list"
-                        },
-                        {
-                            "id": "menu-customer-mgmt-create",
-                            "title": "Create",
-                            "url": "#/customer/create"
-                        }
-                    ]
-                },
-                {
-                    "id": "menu-bank-mgmt-ref",
-                    "menuList": [{
-                            "id": "menu-bank-mgmt-list",
-                            "title": "List",
-                            "url": "#/bank/list"
-                        },
-                        {
-                            "id": "menu-bank-mgmt-create",
-                            "title": "Create",
-                            "url": "#/bank/create"
-                        }
-                    ]
-                }
-            ],
+            primaryMenuList: {
+                "CMRef": [
+                    {
+                        "id": "CMRef-create",
+                        "title": "Create Customer",
+                        "reference": null,
+                        "url": "/customer/create"
+                    },
+                    {
+                        "id": "CMRef-list",
+                        "title": "List Customer",
+                        "reference": null,
+                        "url": "/customer/list"
+                    }
+                ],
+                "main": [
+                    {
+                        "id": "BM",
+                        "title": "Bank Maintenance",
+                        "reference": "BMRef",
+                        "url": null
+                    },
+                    {
+                        "id": "CM",
+                        "title": "Customer Maintenance",
+                        "reference": "CMRef",
+                        "url": null
+                    }
+                ],
+                "BMRef": [
+                    {
+                        "id": "BMRef-create",
+                        "title": "Create Bank",
+                        "reference": null,
+                        "url": "/bank/create"
+                    },
+                    {
+                        "id": "BMRef-list",
+                        "title": "List Bank",
+                        "reference": null,
+                        "url": "/bank/list"
+                    }
+                ]
+            },
             viewConfig: [
                 "sampleconfig"
             ]
