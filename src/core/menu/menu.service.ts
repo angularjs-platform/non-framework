@@ -19,20 +19,12 @@ export class MenuService implements IMenuService {
         return this.secondaryMenuList;
     }
 
-    public setPrimaryMenuList = (rawPrimaryMenuList: {}[]): void => {
-        if (rawPrimaryMenuList) {
-            rawPrimaryMenuList.forEach((menu: any): void => {
-               this.primaryMenuList[menu.id] = menu.menuList;
-           });
-        }
+    public setPrimaryMenuList = (rawPrimaryMenuList: {}): void => {
+        this.primaryMenuList = rawPrimaryMenuList;
     }
 
 
-    public setSecondaryMenuList = (rawSecondaryMenuList: {}[]): void => {
-        if (rawSecondaryMenuList) {
-            rawSecondaryMenuList.forEach((menu: any): void => {
-               this.secondaryMenuList[menu.id] = menu.menuList;
-           });
-        }
+    public setSecondaryMenuList = (rawSecondaryMenuList: {}): void => {
+        this.secondaryMenuList = rawSecondaryMenuList;
     }
 }
