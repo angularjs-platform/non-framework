@@ -1,5 +1,5 @@
 <formly-transclude></formly-transclude>
-<div ng-messages="options.formControl.$error">
+<div ng-messages="options.formControl.$error" aria-live="assertive">
 
     <!-- Dynamic Messages from Metadata-->
     <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">

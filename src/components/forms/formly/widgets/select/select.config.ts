@@ -22,7 +22,7 @@ export class FormlyConfig {
                     disabled: check.bool.optional,
                     readonly: check.bool.optional,
                     required: check.bool.optional,
-                    options: check.arrayOf(check.object),
+                    options: check.arrayOf(check.object).optional,
                     multiple: check.bool.optional,
                     labelProp: check.string.optional,
                     valueProp: check.string.optional,
