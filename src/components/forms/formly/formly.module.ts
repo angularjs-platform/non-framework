@@ -8,6 +8,7 @@ import selectWidget from './widgets/select/select.module';
 import switchWidget from './widgets/switch/switch.module';
 import textareaWidget from './widgets/textarea/textarea.module';
 import datepickerWidget from './widgets/datepicker/datepicker.module';
+import buttonWidget from './widgets/button/button.module';
 
 // Widget Wrappers
 import labelWrapper from './widget-wrappers/label/label.module';
@@ -18,7 +19,7 @@ import validationMessages from './widget-wrappers/validation-messages/validation
 import {FormlyConfig} from './formly.config';
 
 angular.module(moduleName, ['formly', inputWidget, checkboxWidget, radiobuttonWidget,
-                    selectWidget, switchWidget, textareaWidget, datepickerWidget,
+                    selectWidget, switchWidget, textareaWidget, datepickerWidget, buttonWidget,
                     labelWrapper, mdInputContainer, validationMessages])
     .config(FormlyConfig);
 

@@ -10,8 +10,7 @@ export class FormComponent implements ng.IComponentOptions {
     constructor() {
         this.bindings = {
             configuration: '=',
-            submit: '=',
-            provider: '='
+            submit: '='
         };
 
         this.transclude = true;
