@@ -19,20 +19,20 @@ export class FormlyConfig {
                 'ngInject';
 
                 $scope.onClick = ($event: any): any => {
-                    if (angular.isUndefined($scope.to.onClick)) {
+                    if (angular.isUndefined($scope.to.onclick)) {
                         return null;
                     }
-                    else if (angular.isString($scope.to.onClick)) {
-                        return $scope.$eval($scope.to.onClick, {$event: $event});
+                    else if (angular.isString($scope.to.onclick)) {
+                        return $scope.$eval($scope.to.onclick, {$event: $event});
                     }
                     else {
-                        return $scope.to.onClick($event);
+                        return $scope.to.onclick($event);
                     }
                 };
             },
             apiCheck: (check: any): any => ({
                 templateOptions: {
-                    onClick: check.oneOfType([check.string, check.func]).optional,
+                    onclick: check.oneOfType([check.string, check.func]).optional,
                     type: check.string.optional,
                     label: check.string
                 }
