@@ -4,10 +4,10 @@ export class ThemeService implements IThemeService {
 
     private theme: string;
 
-    constructor(private $cookies: ng.cookies.ICookiesService) {
+    constructor(private localStorageService: angular.local.storage.ILocalStorageService) {
         'ngInject';
 
-        this.theme = this.$cookies.get('theme') || 'base';
+        this.theme = <string> this.localStorageService.get('theme') || 'base';
     }
 
     public getTheme = (): string => {

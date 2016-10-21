@@ -41,16 +41,16 @@ export class LayoutProvider implements ILayoutProvider {
 
     constructor() {
 
-        // Inject $cookies
-        let $cookies: any;
+        // Inject localStorageService
+        let localStorageService: any;
         let $window: any;
 
-        // This needs to be done because we cant access $cookies service through dependency injection
+        // This needs to be done because we cant access localStorageService service through dependency injection
         // Hack suggested in all forums
-        angular.injector(['ngCookies', 'ng']).invoke([
-            '$cookies', '$window', function (_$cookies: any, _$window: any): any
+        angular.injector(['LocalStorageModule', 'ng']).invoke([
+            'localStorageService', '$window', function (_localStorageService: any, _$window: any): any
             {
-                $cookies = _$cookies;
+                localStorageService = _localStorageService;
                 $window = _$window;
             }
         ]);
@@ -62,8 +62,8 @@ export class LayoutProvider implements ILayoutProvider {
             this.secondaryLayoutType = 'verticalNavigation';
         }
         else {
-            this.primaryLayoutType = $cookies.get('primaryLayoutType') || 'verticalNavigation';
-            this.secondaryLayoutType = $cookies.get('secondaryLayoutType') || 'horizontalNavigation';
+            this.primaryLayoutType = localStorageService.get('primaryLayoutType') || 'verticalNavigation';
+            this.secondaryLayoutType = localStorageService.get('secondaryLayoutType') || 'horizontalNavigation';
         }
     }
 
