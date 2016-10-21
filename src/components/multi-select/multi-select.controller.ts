@@ -6,7 +6,8 @@ export class MultiSelectController implements ng.IComponentController {
     public target: MultiSelectOption[];
 
     constructor(private _: _.LoDashStatic) {
-        // empty
+        'ngInject';
+
     }
 
     public add = (itemList: MultiSelectOption[]): any => {

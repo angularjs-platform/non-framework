@@ -16,6 +16,8 @@ export class FormlyConfig {
                 }
             },
             controller: ($scope: any): void => {
+                'ngInject';
+
                 $scope.onClick = ($event: any): any => {
                     if (angular.isUndefined($scope.to.onClick)) {
                         return null;
