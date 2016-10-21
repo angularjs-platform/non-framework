@@ -2,7 +2,10 @@ import {ILeanScrollService} from './lean-scroll';
 
 export class LeanScrollService implements ILeanScrollService {
 
-    constructor(private defaultConfiguration: any) {}
+    constructor(private defaultConfiguration: any) {
+        'ngInject';
+
+    }
 
     public getConfig = () : void => {
         return this.defaultConfiguration;
