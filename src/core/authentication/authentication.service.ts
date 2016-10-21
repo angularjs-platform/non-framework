@@ -1,7 +1,4 @@
-export interface IAuthenticationService {
-
-    login(orgName: string, userName: string, password:  string): ng.IPromise<any>;
-}
+import {IAuthenticationService} from './authentication';
 
 export class AuthenticationService implements IAuthenticationService {
 
