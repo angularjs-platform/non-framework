@@ -1,5 +1,6 @@
 <formly-transclude></formly-transclude>
-<div ng-messages="options.formControl.$error" aria-live="assertive">
+<div ng-messages="options.formControl.$error"
+    ng-if="options.formControl.$touched || (form.$submitted && formState.triggerFormValidation)" aria-live="assertive">
 
     <!-- Dynamic Messages from Metadata-->
     <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">
