@@ -1,19 +1,23 @@
 import {FormConfiguration, IActionConfig} from './form';
-import {IGenericFormSubmissionService} from '../../../core/form-submission/form-submission';
+import {IGenericFormSubmissionService, IGenericFormValidationService} from '../../../core/forms/forms';
+
 
 export class FormController implements ng.IComponentController {
 
     public configuration: FormConfiguration;
     public customSubmit: Function;
-    public form: any;
+    public form: ng.IFormController;
 
     constructor (private $mdToast: ng.material.IToastService,
                  private $translate: ng.translate.ITranslateService,
                  private $mdDialog: ng.material.IDialogService,
                  private GenericFormSubmissionService: IGenericFormSubmissionService,
+                 private GenericFormValidationService: IGenericFormValidationService,
                  private $state: ng.ui.IStateService,
                  private $document: ng.IDocumentService) {
         'ngInject';
+        this.configuration.options.formState.validator = this.configuration.options.formState.validator || {};
+        this.configuration.options.formState.validator['GenericFormValidationService'] = this.GenericFormValidationService;
     }
 
     // Centralized FormSubmission
@@ -114,11 +118,11 @@ export class FormController implements ng.IComponentController {
         const actionConfig: IActionConfig = this.configuration.options.formState.actionConfig;
 
         // Parent Controller (View Manager) of the Form
-        const provider: Object = this.configuration.options.formState.provider;
+        const viewManager: Object = this.configuration.options.formState.viewManager;
 
         // Call the Parent Controller's method specified by forwardToMethod
         if (actionConfig.forwardToMethod) {
-            provider[actionConfig.forwardToMethod](this.form);
+            viewManager[actionConfig.forwardToMethod](this.form);
         }
         // Else call the endpoint using the GenericFormSubmissionService
         else if (actionConfig.endpointURL && actionConfig.nextState) {
