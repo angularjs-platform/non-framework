@@ -23,20 +23,6 @@ function config(req, res, next) {
         loggedIn = true;
         res.json({
             primaryMenuList: {
-                "CMRef": [
-                    {
-                        "id": "CMRef-create",
-                        "title": "Create Customer",
-                        "reference": null,
-                        "url": "/customer/create"
-                    },
-                    {
-                        "id": "CMRef-list",
-                        "title": "List Customer",
-                        "reference": null,
-                        "url": "/customer/list"
-                    }
-                ],
                 "main": [
                     {
                         "id": "BM",
@@ -45,9 +31,9 @@ function config(req, res, next) {
                         "url": null
                     },
                     {
-                        "id": "CM",
-                        "title": "Customer Maintenance",
-                        "reference": "CMRef",
+                        "id": "UM",
+                        "title": "User Maintenance",
+                        "reference": "UMRef",
                         "url": null
                     }
                 ],
@@ -63,6 +49,20 @@ function config(req, res, next) {
                         "title": "List Bank",
                         "reference": null,
                         "url": "/bank/list"
+                    }
+                ],
+                "UMRef": [
+                    {
+                        "id": "UMRef-create",
+                        "title": "Create User",
+                        "reference": null,
+                        "url": "/bankgroup/user/create"
+                    },
+                    {
+                        "id": "UMRef-list",
+                        "title": "List User",
+                        "reference": null,
+                        "url": "/bankgroup/user/list"
                     }
                 ]
             },
