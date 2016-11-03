@@ -12,7 +12,8 @@ export interface IFormDisplayState {
 
 export interface IFormState {
     actionConfig?: IActionConfig,
-    provider?: Object,
+    viewManager?: Object,
+    validator?: Object,
     displayState?: string,
     triggerFormValidation?: boolean
 }
