@@ -1,8 +1,8 @@
 const moduleName: string = 'non.framework.core.layout';
 
-import {LayoutProvider} from './layout.provider';
+import {LayoutService} from './layout.service';
 
 angular.module(moduleName, [])
-    .provider('Layout', LayoutProvider);
+    .service('LayoutService', LayoutService);
 
 export default moduleName;

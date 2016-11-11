@@ -1,0 +1,42 @@
+non-horizontal-navigation-bar {
+    .md-menu-bar-button {
+        margin: 0;
+        outline: none;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
+
+    md-menu-bar  {
+        button {
+            color: $font-color-light;
+
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: $menu-hover-bg;
+            }
+        }
+
+        .md-menu.md-open button {
+            background-color: $menu-hover-bg;
+        }
+    }
+}
+
+.primary-horizontal-menu-content {
+    background: $primary-hue-3;
+
+    button,
+    .md-button {
+        color: $font-color-light;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background: $menu-hover-bg;
+        }
+    }
+}

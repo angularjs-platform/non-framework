@@ -3,7 +3,7 @@ import {MultiSelectController} from './multi-select.controller';
 export class MultiSelectComponent implements ng.IComponentOptions {
 
     public bindings: {[binding: string]: string};
-    public controller: ng.IComponentController;
+    public controller: ng.IControllerConstructor;
     public template: string;
 
     constructor() {
