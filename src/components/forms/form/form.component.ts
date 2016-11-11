@@ -3,7 +3,7 @@ import {FormController} from './form.controller';
 export class FormComponent implements ng.IComponentOptions {
 
     public bindings: {[binding: string]: string};
-    public controller: ng.IComponentController;
+    public controller: ng.IControllerConstructor;
     public template: string;
     public transclude: boolean;
 
