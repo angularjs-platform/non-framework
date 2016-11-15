@@ -2,7 +2,7 @@ import {IThemeService} from './theme';
 
 export class ThemeService implements IThemeService {
 
-    private theme: string;
+    public theme: string;
 
     constructor(private localStorageService: angular.local.storage.ILocalStorageService) {
         'ngInject';
@@ -12,5 +12,10 @@ export class ThemeService implements IThemeService {
 
     public getTheme = (): string => {
         return this.theme;
+    }
+
+    public setTheme = (theme: string): void => {
+        this.localStorageService.set('theme', theme);
+        this.theme = theme;
     }
 }
