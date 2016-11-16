@@ -11,6 +11,7 @@ import datepickerWidget from './widgets/datepicker/datepicker.module';
 import buttonWidget from './widgets/button/button.module';
 import multiSelectWidget from './widgets/multiselect/multiselect.module';
 import submitButtonWidget from './widgets/submit-button/submit-button.module';
+import lookupWidget from './widgets/lookup/lookup.module';
 
 // Widget Wrappers
 import labelWrapper from './widget-wrappers/label/label.module';
@@ -21,7 +22,8 @@ import validationMessages from './widget-wrappers/validation-messages/validation
 import {FormlyConfig} from './formly.config';
 
 angular.module(moduleName, ['formly', inputWidget, checkboxWidget, radiobuttonWidget,
-                    selectWidget, switchWidget, textareaWidget, datepickerWidget, buttonWidget, submitButtonWidget, multiSelectWidget,
+                    selectWidget, switchWidget, textareaWidget, datepickerWidget, buttonWidget, submitButtonWidget,
+                    multiSelectWidget, lookupWidget,
                     labelWrapper, mdInputContainer, validationMessages])
     .config(FormlyConfig);
 
