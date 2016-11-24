@@ -6,25 +6,24 @@ export class MenuService implements IMenuService {
     private secondaryMenuList: any;
 
     constructor() {
-
-        this.primaryMenuList = {};
-        this.secondaryMenuList = {};
+        this.primaryMenuList = null;
+        this.secondaryMenuList = null;
     }
 
-    public getPrimaryMenuList = (): {} => {
+    public getPrimaryMenuList = (): any => {
         return this.primaryMenuList;
     }
 
-    public getSecondaryMenuList = (): {} => {
+    public getSecondaryMenuList = (): any => {
         return this.secondaryMenuList;
     }
 
-    public setPrimaryMenuList = (rawPrimaryMenuList: {}): void => {
+    public setPrimaryMenuList = (rawPrimaryMenuList: any): void => {
         this.primaryMenuList = rawPrimaryMenuList;
     }
 
 
-    public setSecondaryMenuList = (rawSecondaryMenuList: {}): void => {
+    public setSecondaryMenuList = (rawSecondaryMenuList: any): void => {
         this.secondaryMenuList = rawSecondaryMenuList;
     }
 }

@@ -17,12 +17,7 @@ export class LayoutService implements ILayoutService {
     }
 
     public getSecondaryLayoutType = (): string => {
-        if (this.isMobile()) {
-            return 'vertical';
-        }
-        else {
-            return <string>this.localStorageService.get('secondaryLayoutType') || 'vertical';
-        }
+        return <string>this.localStorageService.get('secondaryLayoutType') || 'right';
     }
 
     public setPrimaryLayoutType = (primaryLayoutType: any): void => {

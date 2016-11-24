@@ -5,10 +5,6 @@ export class TransactionFormWrapperComponent implements ng.IComponentOptions {
     public template: string;
 
     constructor() {
-        this.bindings = {
-            title: '@'
-        };
-
         this.transclude = true;
 
         this.template = require('./transaction-form-wrapper.tpl');
