@@ -1,4 +1,4 @@
-import { IDataGridService, GridColumn, ButtonOptions } from './data-grid';
+import { IDataGridService, GridColumn, ButtonOptions, GridOptions } from './data-grid';
 
 export class DataGridService implements IDataGridService {
 
@@ -8,7 +8,10 @@ export class DataGridService implements IDataGridService {
         delete: 'delete'
     };
 
-    constructor(private $translate: ng.translate.ITranslateService) {
+    constructor(
+        private $translate: ng.translate.ITranslateService,
+        private uiGridConstants: uiGrid.IUiGridConstants
+    ) {
         'ngInject';
     }
 
@@ -34,6 +37,27 @@ export class DataGridService implements IDataGridService {
                 column.enableColumnMenu = false;
             }
         });
+    };
+
+    public transformGridOptions = (options: GridOptions): void => {
+        // Default values
+        options.enableHorizontalScrollbar = this.uiGridConstants.scrollbars.NEVER;
+        options.enableVerticalScrollbar = this.uiGridConstants.scrollbars.NEVER;
+        options.showGridFooter = true;
+        options.enableFiltering = true;
+        options.enableRowSelection = false;
+        options.enableRowHeaderSelection = false;
+
+        if (options.gridType === 'selectable') {
+            options.enableRowSelection = true;
+            options.enableRowHeaderSelection = false;
+            options.enableFullRowSelection = true;
+            options.multiSelect = false;
+            options.onRegisterApi = (gridApi: any): void => {
+                // TODO: Seems wierd to pass null but it needs a scope.. passing 'this' is throwing error... :(
+                gridApi.selection.on.rowSelectionChanged(null, options.appScopeProvider[options.selectAction]);
+            };
+        }
     };
 
     private buildButtonTemplate = (buttonOptions: ButtonOptions[]): string => {

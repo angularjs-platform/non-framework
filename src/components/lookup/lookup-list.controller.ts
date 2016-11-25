@@ -1,6 +1,8 @@
+import { GridOptions } from '../data-grid/data-grid';
+
 export class LookupListController implements ng.IComponentController {
 
-    public options: uiGrid.IGridOptions;
+    public options: GridOptions;
     public model: any;
     public mapping: any;
 
@@ -10,27 +12,21 @@ export class LookupListController implements ng.IComponentController {
     ) {
         'ngInject';
 
-        this.options.enableRowHeaderSelection = false;
-        this.options.enableFullRowSelection = true;
-        this.options.multiSelect = false;
-
-        this.options.onRegisterApi = (gridApi: uiGrid.IGridApiOf<any>): void => {
-            // TODO: Seems wierd to pass null but it needs a scope.. passing 'this' is throwing error... :(
-            gridApi.selection.on.rowSelectionChanged(null, this.rowSelectedHandler);
-        };
+        this.options.gridType = 'selectable';
+        this.options.selectAction = 'rowSelectedHandler';
     }
 
     public closeDialog = (): void => {
         this.$mdDialog.hide();
     };
 
-    private rowSelectedHandler = (row: uiGrid.IGridRowOf<any>): void => {
+    public rowSelectedHandler = (row: uiGrid.IGridRowOf<any>): void => {
         let mappedObject: any = {};
         this._.forOwn(this.mapping, (value: any, key: any) => {
             this.getMappedObject(value, row.entity[key], mappedObject);
         });
-        // Extend model with the mapped object
-        this._.extend(this.model, mappedObject);
+        // Merge model with the mapped object
+        this._.merge(this.model, mappedObject);
 
         // Close dialog
         this.closeDialog();
