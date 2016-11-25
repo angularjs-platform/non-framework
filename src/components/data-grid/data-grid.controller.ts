@@ -7,17 +7,14 @@ export class DataGridController implements ng.IComponentController {
     public title: string;
 
     constructor(
-        private DataGridService: IDataGridService,
-        private uiGridConstants: uiGrid.IUiGridConstants) {
+        private DataGridService: IDataGridService
+    ) {
         'ngInject';
 
-         // Default values
-        this.options.enableHorizontalScrollbar = uiGridConstants.scrollbars.NEVER;
-        this.options.enableVerticalScrollbar = uiGridConstants.scrollbars.NEVER;
-        this.options.showGridFooter = true;
-        this.options.enableFiltering = true;
-
         this.options.appScopeProvider = this.provider;
+
+        // Transform grid opitons into ui-grid specific
+        DataGridService.transformGridOptions(this.options);
 
         // Get the title for the page
         this.title = DataGridService.getTranslatedValue(this.options.title);
