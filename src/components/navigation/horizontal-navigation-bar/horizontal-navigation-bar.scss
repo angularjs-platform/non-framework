@@ -3,6 +3,10 @@ non-horizontal-navigation-bar {
         margin: 0;
         outline: none;
 
+        &.active {
+            background: $primary-hue-2;
+        }
+
         a {
             text-decoration: none;
             color: inherit;
@@ -12,6 +16,10 @@ non-horizontal-navigation-bar {
     md-menu-bar  {
         button {
             color: $font-color-light;
+
+            &.active {
+                background: $primary-hue-2;
+            }
 
             &:hover,
             &:active,
@@ -32,6 +40,10 @@ non-horizontal-navigation-bar {
     button,
     .md-button {
         color: $font-color-light;
+
+        &.active {
+            background: $primary-default;
+        }
 
         &:hover,
         &:active,
