@@ -1,4 +1,4 @@
 <md-button ng-click="onClick($event)" type="{{to.type}}"
-    class="md-raised md-base-theme md-ink-ripple {{to.class}}">
+    class="md-raised {{to.class}} md-ink-ripple md-{{ThemeService.getTheme()}}-theme">
     <span translate>{{to.label}}</span>
 </md-button>

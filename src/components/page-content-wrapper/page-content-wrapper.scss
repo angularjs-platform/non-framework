@@ -1,0 +1,25 @@
+non-page-content-wrapper {
+    .page-content {
+        background: $card-bg;
+        padding: 20px;
+
+        .md-subheader-wrapper {
+            left: -60px;
+            width: 98%;
+
+            .md-subheader {
+                background: $primary-50;
+                font-weight: bold;
+                color: $primary-default;
+            }
+        }
+    }
+
+    md-toolbar {
+        font-size: 16px;
+        height: 44px;
+        min-height: 44px;
+        padding: 5px;
+        border-bottom: 4px solid $accent-default;
+    }
+}

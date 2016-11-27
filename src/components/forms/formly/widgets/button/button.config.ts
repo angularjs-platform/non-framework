@@ -1,3 +1,4 @@
+import {IThemeService} from '../../../../../core/theme/theme';
 
 export class FormlyConfig {
     // TODO:G Cant use AngularFormly.IFormlyConfig typedef bcoz apiCheck needs to be a function for the code to work. However type def checks for a object
@@ -15,8 +16,10 @@ export class FormlyConfig {
                     skipNgModelAttrsManipulator: true // performance optimazation because this type has no ng-model
                 }
             },
-            controller: ($scope: any): void => {
+            controller: ($scope: any, ThemeService: IThemeService): void => {
                 'ngInject';
+
+                $scope.ThemeService = ThemeService;
 
                 $scope.onClick = ($event: any): any => {
                     if (angular.isUndefined($scope.to.onclick)) {

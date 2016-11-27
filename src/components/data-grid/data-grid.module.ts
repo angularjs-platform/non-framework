@@ -1,6 +1,6 @@
 import {DataGridComponent} from './data-grid.component';
 
-const moduleName: string = 'non.container.grid';
+const moduleName: string = 'non.framework.components.grid';
 
 import {DataGridService} from './data-grid.service';
 
