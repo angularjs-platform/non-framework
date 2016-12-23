@@ -1,4 +1,4 @@
-import { IDataGridService, GridColumn, ButtonOptions, GridOptions } from './data-grid';
+import { IDataGridService, GridColumn, ButtonOptions, GridOptions, PageSearchQuery, GridDataSource } from './data-grid';
 
 export class DataGridService implements IDataGridService {
 
@@ -10,7 +10,8 @@ export class DataGridService implements IDataGridService {
 
     constructor(
         private $translate: ng.translate.ITranslateService,
-        private uiGridConstants: uiGrid.IUiGridConstants
+        private uiGridConstants: uiGrid.IUiGridConstants,
+        private $http: ng.IHttpService
     ) {
         'ngInject';
     }
@@ -43,14 +44,14 @@ export class DataGridService implements IDataGridService {
         // Default values
         options.enableHorizontalScrollbar = this.uiGridConstants.scrollbars.NEVER;
         options.enableVerticalScrollbar = this.uiGridConstants.scrollbars.NEVER;
-        options.showGridFooter = true;
         options.enableFiltering = true;
         options.enableRowSelection = false;
         options.enableRowHeaderSelection = false;
+        options.paginationPageSizes = [10, 25, 50];
+        options.useExternalPagination = true;
 
         if (options.gridType === 'selectable') {
             options.enableRowSelection = true;
-            options.enableRowHeaderSelection = false;
             options.enableFullRowSelection = true;
             options.multiSelect = false;
             options.onRegisterApi = (gridApi: any): void => {
@@ -59,6 +60,26 @@ export class DataGridService implements IDataGridService {
             };
         }
     };
+
+    public loadData = (url: string, query: PageSearchQuery): ng.IPromise<any> => {
+
+        return this.$http.post(url, {pageSearchQuery: query}).then(this.handleData);
+    };
+
+    public getDataSourceObject = (url: string, additionalOptions: GridOptions): GridDataSource => {
+        let dataSource: GridDataSource = {};
+        dataSource.url = url;
+
+        if (additionalOptions !== undefined) {
+            dataSource.additionalOptions = additionalOptions;
+        }
+
+        return dataSource;
+    };
+
+    private handleData = (response: any): any => {
+        return response.data;
+    }
 
     private buildButtonTemplate = (buttonOptions: ButtonOptions[]): string => {
         let template: string = '';

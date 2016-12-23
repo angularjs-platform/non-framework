@@ -27,7 +27,7 @@ export class LookupController implements ng.IComponentController {
             controllerAs: 'vm',
             bindToController: true,
             locals: {
-                options: this.getData(),
+                url: this.getSourceUrl(),
                 mapping: this.mapping,
                 model: this.model
             }
@@ -35,7 +35,7 @@ export class LookupController implements ng.IComponentController {
         this.$mdDialog.show(dialogOptions);
     };
 
-    private getData = (): any => {
+    private getSourceUrl = (): any => {
         return this.viewManager[this.sourceData]();
     };
 
