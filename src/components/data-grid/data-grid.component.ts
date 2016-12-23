@@ -8,8 +8,8 @@ export class DataGridComponent implements ng.IComponentOptions {
 
     constructor() {
         this.bindings = {
-            options: '=',
-            provider: '='
+            provider: '=',
+            source: '='
         };
 
         this.controller = DataGridController;
