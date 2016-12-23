@@ -1,8 +1,9 @@
-import { GridOptions } from '../data-grid/data-grid';
+import { GridDataSource } from '../data-grid/data-grid';
 
 export class LookupListController implements ng.IComponentController {
 
-    public options: GridOptions;
+    public source: GridDataSource;
+    public url: string;
     public model: any;
     public mapping: any;
 
@@ -11,9 +12,13 @@ export class LookupListController implements ng.IComponentController {
         private _: _.LoDashStatic
     ) {
         'ngInject';
-
-        this.options.gridType = 'selectable';
-        this.options.selectAction = 'rowSelectedHandler';
+        this.source = {
+            url: this.url,
+            additionalOptions: {
+                gridType: 'selectable',
+                selectAction: 'rowSelectedHandler'
+            }
+        };
     }
 
     public closeDialog = (): void => {
