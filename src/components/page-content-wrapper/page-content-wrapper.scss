@@ -1,11 +1,12 @@
-non-page-content-wrapper {
+non-page-content-wrapper,
+.non-page-content-wrapper {
     .page-content {
         background: $card-bg;
         padding: 20px;
 
         .md-subheader-wrapper {
             left: -60px;
-            width: 98%;
+            width: 25%;
 
             .md-subheader {
                 background: $primary-50;

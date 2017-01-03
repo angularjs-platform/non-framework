@@ -18,6 +18,7 @@ import gridMultipleItemsWidget from './widgets/gridmultipleitems/gridmultipleite
 // Widget Wrappers
 import labelWrapper from './widget-wrappers/label/label.module';
 import fieldsetWrapper from './widget-wrappers/fieldset/fieldset.module';
+import fieldwrapper from './widget-wrappers/fieldwrapper/fieldwrapper.module';
 import mdInputContainer from './widget-wrappers/md-input-container/md-input-container.module';
 import validationMessages from './widget-wrappers/validation-messages/validation-messages.module';
 
@@ -27,7 +28,7 @@ import {FormlyConfig} from './formly.config';
 angular.module(moduleName, ['formly', inputWidget, checkboxWidget, radiobuttonWidget,
                     selectWidget, switchWidget, textareaWidget, datepickerWidget, buttonWidget, submitButtonWidget,
                     multiSelectWidget, lookupWidget, divider, gridMultipleItemsWidget,
-                    labelWrapper, mdInputContainer, validationMessages, fieldsetWrapper])
+                    labelWrapper, mdInputContainer, validationMessages, fieldsetWrapper, fieldwrapper])
     .config(FormlyConfig);
 
 export default moduleName;

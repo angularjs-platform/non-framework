@@ -1,9 +1,10 @@
 import { FormConfiguration } from '../forms';
+import {Formly} from '../formly/formly';
 
 export class DialogFormController implements ng.IComponentController {
 
     public formConfig: FormConfiguration;
-    public formFields: AngularFormly.IFieldArray;
+    public formFields: Formly.IFieldArray;
     public formData: any;
 
     constructor(
