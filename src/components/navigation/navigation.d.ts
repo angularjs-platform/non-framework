@@ -1,9 +1,9 @@
 export type menuItem = {
-    id: string,
-    title: string,
-    url: string,
-    ref: string,
-    active?: boolean
+    id: string;
+    title: string;
+    url: string;
+    ref: string;
+    active?: boolean;
 }
 
 export interface IState extends ng.ui.IState {

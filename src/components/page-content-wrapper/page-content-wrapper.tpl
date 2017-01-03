@@ -1,4 +1,4 @@
-<div layout="column" class="md-whiteframe-4dp" flex id="scrollTop">
+<div layout="column" class="md-whiteframe-4dp" flex>
     <md-toolbar layout-padding>
         <span translate>{{$ctrl.title}}</span>
     </md-toolbar>
