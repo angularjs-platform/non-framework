@@ -122,6 +122,7 @@ export class FormController implements ng.IComponentController {
 
         // Call the Parent Controller's method specified by forwardToMethod
         if (actionConfig.forwardToMethod) {
+            console.log(viewManager);
             viewManager[actionConfig.forwardToMethod](this.form);
         }
         // Else call the endpoint using the GenericFormSubmissionService

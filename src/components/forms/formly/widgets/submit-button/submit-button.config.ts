@@ -19,7 +19,7 @@ export class FormlyConfig {
             },
             apiCheck: (check: any): any => ({
                 templateOptions: {
-                    actionConfig: check.object
+                    actionConfig: check.object.optional
                 }
             })
         });

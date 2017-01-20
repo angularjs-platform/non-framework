@@ -1,0 +1,39 @@
+{
+    "wrapper": "fieldset",
+    "templateOptions": {
+        "label": "SEARCH_OPTIONS"
+    },
+    "elementAttributes": {
+        "layout": "column"
+    },
+    "fieldGroup": [
+        {
+           "elementAttributes": {
+                "layout": "row"
+            },
+            "fieldGroup": [
+                {
+                    "type": "submitbutton",
+                    "templateOptions": {
+                        "label": "SEARCH",
+                        "class": "md-primary md-hue-3"
+                    },
+                    "expressionProperties": {
+                        "templateOptions.label": "'SEARCH' | translate"
+                    }
+                },
+                {
+                    "type": "button",
+                    "templateOptions": {
+                        "label": "RESET",
+                        "class": "md-primary",
+                        "onclick": "formState.viewManager.resetSearch()"
+                    },
+                    "expressionProperties": {
+                        "templateOptions.label": "'RESET' | translate"
+                    }
+                }
+            ]
+       }
+    ]
+}
