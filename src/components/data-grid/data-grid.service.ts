@@ -34,7 +34,6 @@ export class DataGridService implements IDataGridService {
             if (column.type === 'button') {
                 column.cellTemplate = this.buildButtonTemplate(column.options);
                 column.enableSorting = false;
-                column.enableFiltering = false;
                 column.enableColumnMenu = false;
             }
         });
@@ -48,6 +47,7 @@ export class DataGridService implements IDataGridService {
         options.enableRowSelection = false;
         options.enableRowHeaderSelection = false;
         options.paginationPageSizes = [10, 25, 50];
+        options.enableFiltering = false;
         options.useExternalPagination = true;
 
         if (options.gridType === 'selectable') {

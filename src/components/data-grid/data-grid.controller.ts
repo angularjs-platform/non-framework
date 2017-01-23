@@ -1,4 +1,6 @@
 import { IDataGridService, GridDataSource, PageSearchQuery, GridOptions } from './data-grid';
+import { FormConfiguration } from '../forms/form/form';
+let searchFormFields: any = require('./data-grid-search.metadata.json');
 
 export class DataGridController implements ng.IComponentController {
 
@@ -6,6 +8,7 @@ export class DataGridController implements ng.IComponentController {
     public options: GridOptions;
     public title: string;
     public source: GridDataSource;
+    public searchFormConfiguration: FormConfiguration;
     private pageSearchQuery: PageSearchQuery;
 
     constructor(
@@ -13,6 +16,18 @@ export class DataGridController implements ng.IComponentController {
         private _: _.LoDashStatic
     ) {
         'ngInject';
+
+        this.searchFormConfiguration = {
+            model: {},
+            fields: [],
+            options: {
+                formState: {
+                    viewManager: {
+                        resetSearch: this.resetSearch
+                    }
+                }
+            }
+        };
 
         // Setup paigination
         this.pageSearchQuery = {
@@ -24,6 +39,16 @@ export class DataGridController implements ng.IComponentController {
 
         // Load grid
         this.loadGrid();
+    }
+
+    public performSearch = (): void => {
+        this.pageSearchQuery.searchOptions = this.searchFormConfiguration.model;
+        this.loadGrid();
+    }
+
+    public resetSearch = (): void => {
+       this.searchFormConfiguration.model = {};
+       this.pageSearchQuery.searchOptions = {};
     }
 
     private performPagination = (newPage: number, pageSize: number): void => {
@@ -44,6 +69,14 @@ export class DataGridController implements ng.IComponentController {
         if (this.source.additionalOptions) {
             // Merge model with the mapped object
             this._.merge(this.options, this.source.additionalOptions);
+        }
+
+        if (options.searchOptions) {
+            // Merge fields with the searchOptions
+            let searchFields: any = this._.cloneDeep(searchFormFields);
+
+            searchFields.fieldGroup.unshift(...options.searchOptions);
+            this.searchFormConfiguration.fields = [searchFields];
         }
 
         this.options.onRegisterApi = (gridApi: any): void => {

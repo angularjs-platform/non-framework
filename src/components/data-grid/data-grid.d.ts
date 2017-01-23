@@ -16,6 +16,7 @@ export interface GridOptions extends uiGrid.IGridOptions {
     title?: string;
     gridType?: 'selectable';
     selectAction?: string;
+    searchOptions?: [Object];
 }
 
 export interface GridColumn extends uiGrid.IColumnDef {
@@ -38,6 +39,6 @@ export type PaginationOptions = {
 
 export type PageSearchQuery =  {
 	paginationOptions?: PaginationOptions;
-	searchOptions?: {[binding: string]: string};
+	searchOptions?: Object;
 	queryParams?: {[binding: string]: string};
 }
