@@ -1,5 +1,5 @@
 import {FormConfiguration, IActionConfig} from './form';
-import {IGenericFormSubmissionService, IGenericFormValidationService} from '../../../core/forms/forms';
+import {IGenericFormSubmissionService, IGenericFormValidationService, IConfigurationService} from '../../../core/core.model';
 
 
 export class FormController implements ng.IComponentController {
@@ -13,9 +13,11 @@ export class FormController implements ng.IComponentController {
                  private $mdDialog: ng.material.IDialogService,
                  private GenericFormSubmissionService: IGenericFormSubmissionService,
                  private GenericFormValidationService: IGenericFormValidationService,
+                 private ConfigurationService: IConfigurationService,
                  private $state: ng.ui.IStateService,
                  private $document: ng.IDocumentService) {
         'ngInject';
+        this.configuration.options.formState.configObject = this.ConfigurationService;
         this.configuration.options.formState.validator = this.configuration.options.formState.validator || {};
         this.configuration.options.formState.validator['GenericFormValidationService'] = this.GenericFormValidationService;
     }
@@ -122,7 +124,6 @@ export class FormController implements ng.IComponentController {
 
         // Call the Parent Controller's method specified by forwardToMethod
         if (actionConfig.forwardToMethod) {
-            console.log(viewManager);
             viewManager[actionConfig.forwardToMethod](this.form);
         }
         // Else call the endpoint using the GenericFormSubmissionService
