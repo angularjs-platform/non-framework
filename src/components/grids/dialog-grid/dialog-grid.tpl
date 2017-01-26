@@ -3,8 +3,8 @@
         <non-data-grid source="vm.source" provider="vm"> </non-data-grid>
     </md-dialog-content>
     <md-dialog-actions>
-        <md-button ng-click="vm.closeDialog()" class="md-primary">
-            Close
+        <md-button ng-click="vm.closeDialog()" class="md-primary" translate>
+            CLOSE
         </md-button>
     </md-dialog-actions>
 </md-dialog>

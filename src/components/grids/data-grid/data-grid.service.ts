@@ -43,7 +43,6 @@ export class DataGridService implements IDataGridService {
         // Default values
         options.enableHorizontalScrollbar = this.uiGridConstants.scrollbars.NEVER;
         options.enableVerticalScrollbar = this.uiGridConstants.scrollbars.NEVER;
-        options.enableFiltering = true;
         options.enableRowSelection = false;
         options.enableRowHeaderSelection = false;
         options.paginationPageSizes = [10, 25, 50];
@@ -58,6 +57,10 @@ export class DataGridService implements IDataGridService {
                 // TODO: Seems wierd to pass null but it needs a scope.. passing 'this' is throwing error... :(
                 gridApi.selection.on.rowSelectionChanged(null, options.appScopeProvider[options.selectAction]);
             };
+        }
+
+        if (options.footerButtons && options.footerButtons.length > 0) {
+            options.gridFooterTemplate = this.buildFooterButtonTemplate(options.footerButtons);
         }
     };
 
@@ -108,4 +111,17 @@ export class DataGridService implements IDataGridService {
         return template;
 
     };
+
+    private buildFooterButtonTemplate = (buttonOptions: ButtonOptions[]): string => {
+        let template: string = '<div layout="row" layout-align="end top">';
+
+        buttonOptions.forEach((option: any): any => {
+            let label: string = this.getTranslatedValue(option.buttonLabel);
+            template = template + ' <md-button class="md-primary md-raised" ng-click="grid.appScope.' +
+                                    option.action + '()" aria-label=' +
+                                    label + '> ' +
+                                    label + '</md-button> ';
+        });
+        return template + '</div>';
+     };
 }

@@ -17,6 +17,7 @@ export interface GridOptions extends uiGrid.IGridOptions {
     gridType?: 'selectable';
     selectAction?: string;
     searchOptions?: [Object];
+    footerButtons?: ButtonOptions[];
 }
 
 export interface GridColumn extends uiGrid.IColumnDef {
@@ -30,6 +31,7 @@ export type ButtonOptions = {
     buttonLabel: string;
     type?: string;
     icon?: string;
+    useGridCtrl?: boolean;
 }
 
 export type PaginationOptions = {

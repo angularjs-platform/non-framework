@@ -1,5 +1,5 @@
 import { IDataGridService, GridDataSource, PageSearchQuery, GridOptions } from './data-grid';
-import { FormConfiguration } from '../forms/form/form';
+import { FormConfiguration } from '../../components.model';
 const searchFormFields: any = require('./data-grid-search.metadata.json');
 
 export class DataGridController implements ng.IComponentController {
