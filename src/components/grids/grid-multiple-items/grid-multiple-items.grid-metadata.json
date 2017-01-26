@@ -1,0 +1,31 @@
+{
+    "data": "$ctrl.items",
+    "showGridFooter": true,
+    "footerButtons": [
+        {
+            "action" : "add",
+            "buttonLabel" : "ADD"
+        }
+    ],
+    "columnDefs" : [
+        {
+            "name" : "Actions",
+            "labelKey" : "ACTIONS",
+            "visible" : true,
+            "type" : "button",
+            "options" :
+            [
+                {
+                    "action" : "edit",
+                    "buttonLabel" : "EDIT",
+                    "type" : "edit"
+                },
+                {
+                    "action" : "delete",
+                    "buttonLabel" : "DELETE",
+                    "type" : "delete"
+                }
+            ]
+        }
+    ]
+}

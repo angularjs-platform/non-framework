@@ -1,3 +1,3 @@
 export * from './navigation/navigation';
-export * from './data-grid/data-grid';
+export * from './grids/grids';
 export * from './forms/forms';
