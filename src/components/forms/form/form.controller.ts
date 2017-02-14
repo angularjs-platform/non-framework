@@ -10,7 +10,7 @@ export class FormController implements ng.IComponentController {
 
     constructor (private $mdToast: ng.material.IToastService,
                  private $translate: ng.translate.ITranslateService,
-                 private $mdDialog: ng.material.IDialogService,
+                 private $mdDialog: any,
                  private GenericFormSubmissionService: IGenericFormSubmissionService,
                  private GenericFormValidationService: IGenericFormValidationService,
                  private ConfigurationService: IConfigurationService,
@@ -64,6 +64,7 @@ export class FormController implements ng.IComponentController {
                         this.$mdDialog.alert()
                             .title(this.$translate.instant('CORRECT_FORM_INPUT_ERRORS'))
                             .ok(this.$translate.instant('OK')))
+                            .multiple(true)
                             .then((): void => {
                                 // Set Focus on first invalid field
                                 this.focusOnFirstInvalidElement();
@@ -105,6 +106,7 @@ export class FormController implements ng.IComponentController {
                 .textContent(this.$translate.instant(actionDialogSubjectLocaleKey))
                 .ok(this.$translate.instant('OK'))
                 .cancel(this.$translate.instant('CANCEL')))
+                .multiple(true)
                 .then((): void => {
                     this.submitForm($event);
                 }, (): void => {
