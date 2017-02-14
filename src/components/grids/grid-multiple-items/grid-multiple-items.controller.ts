@@ -1,13 +1,14 @@
 import { IDialogFormService } from '../../components.model';
 import { IDataGridService, GridOptions } from '../grids';
 import { GridMultipleItemConfig } from './grid-multiple-items';
+import {Formly} from '../../forms/formly/formly';
 
 const gridDefaultConfig: any =  require('./grid-multiple-items.grid-metadata.json');
 
 export class GridMultipleItemsController implements ng.IComponentController {
 
     public gridConfig: GridOptions;
-    public formConfig: AngularFormly.IFieldArray;
+    public formConfig: Formly.IFieldArray;
     public config: GridMultipleItemConfig;
     public items: any;
 

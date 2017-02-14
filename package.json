@@ -28,7 +28,9 @@
     "angular-material-sidemenu": "1.0.2",
     "angular-ui-grid": "3.2.9",
     "angular-breadcrumb": "0.5.0",
+    "v-accordion": "1.6.0",
     "ng-fx": "2.0.4",
+    "dragular": "4.2.5",
     "perfect-scrollbar": "0.6.12",
     "lodash": "4.16.6",
 
