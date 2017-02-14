@@ -19,7 +19,7 @@ export class GridMultipleItemsController implements ng.IComponentController {
         private DialogFormService: IDialogFormService,
         private _: _.LoDashStatic,
         private $translate: any,
-        private $mdDialog: ng.material.IDialogService,
+        private $mdDialog: any,
         private $timeout: any
     ) {
         'ngInject';
@@ -59,6 +59,7 @@ export class GridMultipleItemsController implements ng.IComponentController {
                 .title(this.$translate.instant('FORM_CONFIRMATION_DIALOG_TITLE_MESSAGE'))
                 .textContent(this.$translate.instant('DELETE_LIST_ITEM_CONFIRMATION_DIALOG_SUBJECT_MESSAGE'))
                 .ok(this.$translate.instant('OK'))
+                .multiple(true)
                 .cancel(this.$translate.instant('CANCEL'))
         )
         .then((): void => {
@@ -81,6 +82,9 @@ export class GridMultipleItemsController implements ng.IComponentController {
         // Update the grid data if saved in the opened dialog
         if (response) {
             if (!this.editMode) {
+                if (!this.items) {
+                    this.items = [];
+                }
                 this.items.push(response);
             }
             else {
