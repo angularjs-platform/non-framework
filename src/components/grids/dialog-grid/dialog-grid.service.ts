@@ -4,13 +4,14 @@ import { DialogGridController } from './dialog-grid.controller';
 export class DialogGridService implements IDialogGridService {
 
     constructor(
-        private $mdDialog: ng.material.IDialogService
+        private $mdDialog: any
     ) {
         'ngInject';
     }
 
     public open = (url: string): ng.IPromise<any> => {
         return this.$mdDialog.show({
+            multiple: true,
             template: require('./dialog-grid.tpl'),
             controller: DialogGridController,
             // TODO: Actually implement CSS for .md-dialog-fullscreen class to make dialog fullscreen

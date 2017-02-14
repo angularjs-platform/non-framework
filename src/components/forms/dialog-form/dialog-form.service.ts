@@ -4,13 +4,14 @@ import { DialogFormController } from './dialog-form.controller';
 export class DialogFormService implements IDialogFormService {
 
     constructor(
-        private $mdDialog: ng.material.IDialogService
+        private $mdDialog: any
     ) {
         'ngInject';
     }
 
     public open = (formConfig: any, formData: any): ng.IPromise<any> => {
         return this.$mdDialog.show({
+            multiple: true,
             template: require('./dialog-form.tpl'),
             controller: DialogFormController,
             controllerAs : 'vm',
