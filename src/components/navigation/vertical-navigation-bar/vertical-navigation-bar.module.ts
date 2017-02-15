@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.components.vertical-navigation-bar';
 
 import {VerticalNavigationBarComponent} from './vertical-navigation-bar.component';

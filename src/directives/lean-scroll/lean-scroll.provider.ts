@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 import {ILeanScrollService} from './lean-scroll';
 
 export class LeanScrollService implements ILeanScrollService {

@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.components';
 
 import navigation from './navigation/navigation.module';

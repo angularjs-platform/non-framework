@@ -4,9 +4,7 @@
   "description": "Framework for the NoN Frontend",
   "main": "src/framework.module.ts",
   "typings": "src/framework.model.ts",
-  "scripts" : {
-      "install-typings": "typings install"
-  },
+  "scripts" : {},
   "peerDependencies": {
     "jquery": "3.1.0",
     "angular": "1.5.8",
@@ -38,6 +36,15 @@
     "angular-formly": "8.4.0"
   },
   "devDependencies": {
-    "typings": "0.7.12"
+    "@types/angular": "1.6.5",
+    "@types/angular-local-storage": "0.1.33",
+    "@types/angular-material": "1.1.45",
+    "@types/angular-translate": "2.4.34",
+    "@types/angular-ui-router": "1.1.36",
+    "@types/jquery": "2.0.40",
+    "@types/lodash": "4.14.52",
+    "@types/node": "7.0.5",
+    "@types/ui-grid": "0.0.35",
+    "@types/angular-breadcrumb": "0.4.21"
   }
 }
