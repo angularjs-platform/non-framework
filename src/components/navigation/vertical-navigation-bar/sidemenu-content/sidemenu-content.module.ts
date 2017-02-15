@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.components.sidemenu-content';
 
 import {SideMenuContentComponent} from './sidemenu-content.component';

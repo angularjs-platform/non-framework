@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.components.forms.formly.widgets.input';
 
 import {FormlyConfig} from './input.config';

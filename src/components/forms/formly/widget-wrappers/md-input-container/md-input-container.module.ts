@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.components.forms.formly.widget-wrappers.md-input-container';
 
 import {FormlyConfig} from './md-input-container.config';

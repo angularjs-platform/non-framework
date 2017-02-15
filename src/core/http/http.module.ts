@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.core.http';
 
 import {HttpInterceptor} from './http.interceptor';

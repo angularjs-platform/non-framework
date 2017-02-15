@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.components.forms.formly';
 
 // Widgets
@@ -9,6 +11,7 @@ import switchWidget from './widgets/switch/switch.module';
 import textareaWidget from './widgets/textarea/textarea.module';
 import datepickerWidget from './widgets/datepicker/datepicker.module';
 import buttonWidget from './widgets/button/button.module';
+
 import multiSelectWidget from './widgets/multiselect/multiselect.module';
 import submitButtonWidget from './widgets/submit-button/submit-button.module';
 import lookupWidget from './widgets/lookup/lookup.module';

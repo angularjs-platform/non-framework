@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.core.theme';
 
 import {ThemeService} from './theme.service';

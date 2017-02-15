@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.core.layout';
 
 import {LayoutService} from './layout.service';

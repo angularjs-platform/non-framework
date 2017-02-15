@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.components.forms.formly.widgets.submit-button';
 
 import {FormlyConfig} from './submit-button.config';
