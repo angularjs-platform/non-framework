@@ -1,7 +1,9 @@
+import * as angular from 'angular';
+
 import {ILayoutService} from '../../framework.model';
 import {ILeanScrollService} from './lean-scroll';
 
-class LeanScrollDirective implements ng.IDirective {
+export class LeanScrollDirective implements ng.IDirective {
 
     restrict = 'AE';
 
@@ -92,5 +94,3 @@ class LeanScrollDirective implements ng.IDirective {
         };
     }
 }
-
-export default LeanScrollDirective.instance;

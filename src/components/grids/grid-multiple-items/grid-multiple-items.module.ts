@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 import {GridMultipleItemsComponent} from './grid-multiple-items.component';
 
 const moduleName: string = 'non.framework.components.grids.grid-multiple-items';

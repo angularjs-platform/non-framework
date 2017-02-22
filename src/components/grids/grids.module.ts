@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.components.grids';
 
 import dataGrid from './data-grid/data-grid.module';

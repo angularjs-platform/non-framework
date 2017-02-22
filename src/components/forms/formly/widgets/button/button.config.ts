@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 import {IThemeService} from '../../../../../core/theme/theme';
 import {Formly} from '../../formly';
 

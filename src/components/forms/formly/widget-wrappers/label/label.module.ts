@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.components.forms.formly.widget-wrappers.label';
 
 import {FormlyConfig} from './label.config';

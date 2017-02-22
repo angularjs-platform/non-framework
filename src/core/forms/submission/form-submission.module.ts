@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.core.forms.form-submission';
 
 import {GenericFormSubmissionService} from './form-submission.service';

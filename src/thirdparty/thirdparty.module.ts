@@ -1,3 +1,10 @@
+import * as angular from 'angular';
+import 'angular-ui-router';
+import 'angular-material';
+import 'angular-local-storage';
+import 'angular-breadcrumb';
+import 'angular-translate';
+
 const moduleName: string = 'non.framework.thirdparty';
 
 declare const PerfectScrollbar: any;

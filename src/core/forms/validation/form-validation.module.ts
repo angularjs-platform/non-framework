@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 const moduleName: string = 'non.framework.core.forms.form-validation';
 
 import {GenericFormValidationService} from './form-validation.service';

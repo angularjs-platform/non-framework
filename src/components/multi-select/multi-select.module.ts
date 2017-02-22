@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 import {MultiSelectComponent} from './multi-select.component';
 
 const moduleName: string = 'non.container.multiselect';

@@ -1,5 +1,5 @@
 export class BreadcrumbConfig {
-    constructor(private $breadcrumbProvider: ncy.$breadcrumbProvider) {
+    constructor(private $breadcrumbProvider: angular.ncy.$breadcrumbProvider) {
         'ngInject';
 
         $breadcrumbProvider.setOptions({

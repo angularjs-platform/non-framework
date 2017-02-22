@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 import {LookupComponent} from './lookup.component';
 
 const moduleName: string = 'non.framework.components.lookup';
