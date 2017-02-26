@@ -1,7 +1,6 @@
-import { IDialogFormService } from '../../components.model';
+import { IDialogFormService, Formly } from '../../components.model';
 import { IDataGridService, GridOptions } from '../grids';
 import { GridMultipleItemConfig } from './grid-multiple-items';
-import {Formly} from '../../forms/formly/formly';
 
 const gridDefaultConfig: any =  require('./grid-multiple-items.grid-metadata.json');
 
@@ -10,6 +9,9 @@ export class GridMultipleItemsController implements ng.IComponentController {
     public gridConfig: GridOptions;
     public formConfig: Formly.IFieldArray;
     public config: GridMultipleItemConfig;
+    public type: string;
+    public canEdit: boolean;
+    public maxItems: number;
     public items: any;
 
     private editMode: boolean;
@@ -27,13 +29,21 @@ export class GridMultipleItemsController implements ng.IComponentController {
         this.editMode = false;
 
         this.config = {
-           gridConfig: gridDefaultConfig,
+           gridConfig: this._.cloneDeep(gridDefaultConfig),
            formConfig: this.formConfig
         };
 
         // Setup grid columns from passed config
         if (this.gridConfig.columnDefs) {
-            this.config.gridConfig.columnDefs.unshift(...this.gridConfig.columnDefs);
+            this.config.gridConfig.columnDefs = this.gridConfig.columnDefs;
+        }
+
+        // Setup buttons
+        if (this.canEdit) {
+           this.config.gridConfig.columnDefs.push(gridDefaultConfig.actionColumnWithEdit);
+        }
+        else {
+            this.config.gridConfig.columnDefs.push(gridDefaultConfig.actionColumnWithoutEdit);
         }
 
         // Assign some values
@@ -48,12 +58,19 @@ export class GridMultipleItemsController implements ng.IComponentController {
         }
     }
 
-    public edit = (entity: any) : any => {
+    public showAddButton = (): boolean => {
+        if (this.maxItems !== undefined && this.items !== undefined && this.items.length >= this.maxItems) {
+            return false;
+        }
+        return true;
+    };
+
+    public edit = (entity: any): any => {
         this.editMode = true;
         this.openDialog(entity);
     };
 
-    public delete = (entity: any) : any => {
+    public delete = (entity: any): any => {
         this.$mdDialog.show(
             this.$mdDialog.confirm()
                 .title(this.$translate.instant('FORM_CONFIRMATION_DIALOG_TITLE_MESSAGE'))
@@ -67,14 +84,13 @@ export class GridMultipleItemsController implements ng.IComponentController {
         });
     };
 
-    public add = () : any => {
+    public add = (): any => {
         this.editMode = false;
         this.openDialog({});
     };
 
     private openDialog = (data: any): any => {
-
-        this.DialogFormService.open(this.config.formConfig, this._.cloneDeep(data))
+        this.DialogFormService.open(this.type, this.config.formConfig, this._.cloneDeep(data))
             .then(this.handleDialogClose);
     };
 

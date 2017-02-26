@@ -32,6 +32,7 @@ export type ButtonOptions = {
     type?: string;
     icon?: string;
     useGridCtrl?: boolean;
+    visibleFn?: string;
 }
 
 export type PaginationOptions = {
