@@ -10,7 +10,7 @@ export class FormController implements ng.IComponentController {
 
     constructor (private $mdToast: ng.material.IToastService,
                  private $translate: ng.translate.ITranslateService,
-                 private $mdDialog: any,
+                 private $mdDialog: any, /* TODO:G */
                  private GenericFormSubmissionService: IGenericFormSubmissionService,
                  private GenericFormValidationService: IGenericFormValidationService,
                  private ConfigurationService: IConfigurationService,
