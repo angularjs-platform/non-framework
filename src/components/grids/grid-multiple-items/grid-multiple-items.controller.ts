@@ -18,9 +18,9 @@ export class GridMultipleItemsController implements ng.IComponentController {
         private DataGridService: IDataGridService,
         private DialogFormService: IDialogFormService,
         private _: _.LoDashStatic,
-        private $translate: any,
-        private $mdDialog: any,
-        private $timeout: any
+        private $translate: ng.translate.ITranslateService,
+        private $mdDialog: any, /* TODO:G */
+        private $timeout: ng.ITimeoutService
     ) {
         'ngInject';
 

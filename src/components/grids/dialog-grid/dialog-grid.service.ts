@@ -4,7 +4,7 @@ import { DialogGridController } from './dialog-grid.controller';
 export class DialogGridService implements IDialogGridService {
 
     constructor(
-        private $mdDialog: any
+        private $mdDialog: ng.material.IDialogService
     ) {
         'ngInject';
     }

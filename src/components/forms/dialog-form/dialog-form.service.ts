@@ -4,7 +4,7 @@ import { DialogFormController } from './dialog-form.controller';
 export class DialogFormService implements IDialogFormService {
 
     constructor(
-        private $mdDialog: any
+        private $mdDialog: ng.material.IDialogService
     ) {
         'ngInject';
     }
