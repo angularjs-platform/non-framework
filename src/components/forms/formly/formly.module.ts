@@ -17,6 +17,7 @@ import submitButtonWidget from './widgets/submit-button/submit-button.module';
 import lookupWidget from './widgets/lookup/lookup.module';
 import divider from './widgets/divider/divider.module';
 import gridMultipleItemsWidget from './widgets/gridmultipleitems/gridmultipleitems.module';
+import multipleAttachmentsWidget from './widgets/multipleattachments/multipleattachments.module';
 
 // Widget Wrappers
 import labelWrapper from './widget-wrappers/label/label.module';
@@ -30,7 +31,7 @@ import {FormlyConfig} from './formly.config';
 
 angular.module(moduleName, ['formly', inputWidget, checkboxWidget, radiobuttonWidget,
                     selectWidget, switchWidget, textareaWidget, datepickerWidget, buttonWidget, submitButtonWidget,
-                    multiSelectWidget, lookupWidget, divider, gridMultipleItemsWidget,
+                    multiSelectWidget, lookupWidget, divider, gridMultipleItemsWidget, multipleAttachmentsWidget,
                     labelWrapper, mdInputContainer, validationMessages, fieldsetWrapper, fieldwrapper])
     .config(FormlyConfig);
 
