@@ -73,11 +73,11 @@ export class GridMultipleItemsController implements ng.IComponentController {
     public delete = (entity: any): any => {
         this.$mdDialog.show(
             this.$mdDialog.confirm()
-                .title(this.$translate.instant('FORM_CONFIRMATION_DIALOG_TITLE_MESSAGE'))
-                .textContent(this.$translate.instant('DELETE_LIST_ITEM_CONFIRMATION_DIALOG_SUBJECT_MESSAGE'))
-                .ok(this.$translate.instant('OK'))
+                .title(this.$translate.instant('FORM.FORM_CONFIRMATION_DIALOG_TITLE_MESSAGE'))
+                .textContent(this.$translate.instant('FORM.DELETE_LIST_ITEM_CONFIRMATION_DIALOG_SUBJECT_MESSAGE'))
+                .ok(this.$translate.instant('BUTTON.OK'))
                 .multiple(true)
-                .cancel(this.$translate.instant('CANCEL'))
+                .cancel(this.$translate.instant('BUTTON.CANCEL'))
         )
         .then((): void => {
             this._.remove(this.items, entity);

@@ -28,7 +28,7 @@ export class AttachmentDialogFormController implements ng.IComponentController {
 
     private handleUploadFailure = (response: any): void => {
         // Show toaster error message
-        this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant('ERROR_UPLOAD')));
+        this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant('FORM.ERROR_UPLOAD')));
         this.form = null;
     }
 

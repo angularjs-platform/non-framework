@@ -55,7 +55,7 @@ export class FormController implements ng.IComponentController {
 
                 if (actionConfig.hideInvalidFormAlertDialog) {
                     // Show toaster error message
-                    this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant('CORRECT_FORM_INPUT_ERRORS')));
+                    this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant('FORM.CORRECT_FORM_INPUT_ERRORS')));
                      // Set Focus on first invalid field
                     this.focusOnFirstInvalidElement();
                 }
@@ -63,8 +63,8 @@ export class FormController implements ng.IComponentController {
                     // Show Dialog error message
                     this.$mdDialog.show(
                         this.$mdDialog.alert()
-                            .title(this.$translate.instant('CORRECT_FORM_INPUT_ERRORS'))
-                            .ok(this.$translate.instant('OK')))
+                            .title(this.$translate.instant('FORM.CORRECT_FORM_INPUT_ERRORS'))
+                            .ok(this.$translate.instant('BUTTON.OK')))
                             .multiple(true)
                             .then((): void => {
                                 // Set Focus on first invalid field
@@ -103,10 +103,10 @@ export class FormController implements ng.IComponentController {
         }
         else {
             this.$mdDialog.show(this.$mdDialog.confirm()
-                .title(this.$translate.instant('FORM_CONFIRMATION_DIALOG_TITLE_MESSAGE'))
+                .title(this.$translate.instant('FORM.FORM_CONFIRMATION_DIALOG_TITLE_MESSAGE'))
                 .textContent(this.$translate.instant(actionDialogSubjectLocaleKey))
-                .ok(this.$translate.instant('OK'))
-                .cancel(this.$translate.instant('CANCEL')))
+                .ok(this.$translate.instant('BUTTON.OK'))
+                .cancel(this.$translate.instant('BUTTON.CANCEL')))
                 .multiple(true)
                 .then((): void => {
                     this.submitForm($event);
@@ -136,7 +136,7 @@ export class FormController implements ng.IComponentController {
                     // Success
                     () => this.$state.go(actionConfig.nextState),
                     // Error
-                    () => this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant('SUBMISSION_ERROR'))));
+                    () => this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant('FORM.SUBMISSION_ERROR'))));
         }
         // Else error
         else {

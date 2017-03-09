@@ -8,22 +8,22 @@
     </div>
 
     <!-- Input Field: Generic -->
-    <div ng-message="required" translate>FIELD_REQUIRED</div>
-    <div ng-message="minlength" translate>FIELD_MIN_LENGTH_NEEDED</div>
-    <div ng-message="md-maxlength" translate>FIELD_MAX_LENGTH_EXCEEDED</div>
+    <div ng-message="required" translate>FORM.FIELD_REQUIRED</div>
+    <div ng-message="minlength" translate>FORM.FIELD_MIN_LENGTH_NEEDED</div>
+    <div ng-message="md-maxlength" translate>FORM.FIELD_MAX_LENGTH_EXCEEDED</div>
 
     <!-- Input Number Field -->
-    <div ng-message="min" translate>FIELD_MIN_VALUE_NEEDED</div>
-    <div ng-message="max" translate>FIELD_MAX_VALUE_EXCEEDED</div>
+    <div ng-message="min" translate>FORM.FIELD_MIN_VALUE_NEEDED</div>
+    <div ng-message="max" translate>FORM.FIELD_MAX_VALUE_EXCEEDED</div>
 
     <!-- Input Email Field -->
-    <div ng-message="email" translate>FIELD_NOT_EMAIL</div>
+    <div ng-message="email" translate>FORM.FIELD_NOT_EMAIL</div>
 
     <!-- Input URL Field -->
-    <div ng-message="url" translate>FIELD_NOT_URL</div>
+    <div ng-message="url" translate>FORM.FIELD_NOT_URL</div>
 
     <!-- Date Field -->
-    <div ng-message="valid" translate>FIELD_NOT_DATE</div>
-    <div ng-message="mindate" translate>FIELD_MIN_DATE_NEEDED</div>
-    <div ng-message="maxdate" translate>FIELD_MAX_DATE_EXCEEDED</div>
+    <div ng-message="valid" translate>FORM.FIELD_NOT_DATE</div>
+    <div ng-message="mindate" translate>FORM.FIELD_MIN_DATE_NEEDED</div>
+    <div ng-message="maxdate" translate>FORM.FIELD_MAX_DATE_EXCEEDED</div>
 </div>

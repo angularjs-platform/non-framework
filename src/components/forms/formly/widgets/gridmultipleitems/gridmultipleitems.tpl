@@ -1,6 +1,6 @@
 <label>
-    {{to.label}}
-    <span ng-if="to.maxItems" translate="GRID_ITEMS_COUNT"
+    <span translate>{{to.label}}</span>
+    <span ng-if="to.maxItems" translate="GRID.ITEMS_COUNT"
         translate-values="{ count: getCount(), max: to.maxItems }"></span>
 </label>
 <non-grid-multiple-items grid-config="to.gridConfig" form-config="to.formConfig" items="model[options.key]"
