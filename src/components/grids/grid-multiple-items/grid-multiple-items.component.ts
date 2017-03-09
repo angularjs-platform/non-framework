@@ -10,7 +10,10 @@ export class GridMultipleItemsComponent implements ng.IComponentOptions {
         this.bindings = {
             gridConfig: '=',
             formConfig: '=',
-            items: '='
+            items: '=',
+            type: '=',
+            canEdit: '=',
+            maxItems: '='
         };
 
         this.controller = GridMultipleItemsController;

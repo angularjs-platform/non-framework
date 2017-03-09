@@ -17,6 +17,7 @@ export class FormController implements ng.IComponentController {
                  private $state: ng.ui.IStateService,
                  private $document: ng.IDocumentService) {
         'ngInject';
+        this.configuration.options = this.configuration.options || { formState: {} };
         this.configuration.options.formState.configObject = this.ConfigurationService;
         this.configuration.options.formState.validator = this.configuration.options.formState.validator || {};
         this.configuration.options.formState.validator['GenericFormValidationService'] = this.GenericFormValidationService;

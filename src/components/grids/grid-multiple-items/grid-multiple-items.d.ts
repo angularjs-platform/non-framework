@@ -4,5 +4,5 @@ import {Formly} from '../../forms/formly/formly';
 
 export interface GridMultipleItemConfig {
     gridConfig: GridOptions;
-    formConfig: Formly.IFieldArray;
+    formConfig?: Formly.IFieldArray;
 }

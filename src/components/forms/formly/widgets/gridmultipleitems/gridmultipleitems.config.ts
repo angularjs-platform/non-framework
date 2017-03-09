@@ -6,8 +6,12 @@ export class FormlyConfig {
         this.formlyConfigProvider.setType({
             name: 'gridmultipleitems',
             template: require('./gridmultipleitems.tpl'),
-            wrapper: ['mdLabel'],
+
             defaultOptions: {
+                templateOptions: {
+                    canEdit: true,
+                    type: 'generic'
+                },
                 ngModelAttrs: {
                     disabled: {
                         bound: 'ng-disabled'
@@ -17,12 +21,29 @@ export class FormlyConfig {
                     }
                 }
             },
+            controller: ($scope: any): void => {
+                'ngInject';
+
+                $scope.getCount = (): number => {
+                    let modelName: string = $scope.options.key;
+                    if ($scope.model[modelName] !== undefined) {
+                        return $scope.model[modelName].length;
+                    }
+                    else {
+                        return 0;
+                    }
+                };
+
+            },
             apiCheck: (check: any): any => ({
                 templateOptions: {
                     disabled: check.bool.optional,
                     readonly: check.bool.optional,
                     gridConfig: check.object,
-                    formConfig: check.arrayOf(check.object)
+                    formConfig: check.arrayOf(check.object).optional,
+                    type: check.string.optional,
+                    canEdit: check.bool.optional,
+                    maxItems: check.number.optional
                 }
             })
         });

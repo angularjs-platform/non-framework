@@ -1,25 +1,23 @@
-import { IDialogFormService } from './dialog-form';
-import { DialogFormController } from './dialog-form.controller';
+import { IDialogFormService, IGenericDialogFormService, IAttachmentDialogFormService } from './dialog-form';
 
 export class DialogFormService implements IDialogFormService {
 
     constructor(
-        private $mdDialog: ng.material.IDialogService
+        private GenericDialogFormService: IGenericDialogFormService,
+        private AttachmentDialogFormService: IAttachmentDialogFormService
     ) {
         'ngInject';
     }
 
-    public open = (formConfig: any, formData: any): ng.IPromise<any> => {
-        return this.$mdDialog.show({
-            multiple: true,
-            template: require('./dialog-form.tpl'),
-            controller: DialogFormController,
-            controllerAs : 'vm',
-            bindToController: true,
-            locals: {
-                formFields: formConfig,
-                formData: formData
-            }
-        });
+    public open = (type: string, formConfig: any, formData: any): ng.IPromise<any> => {
+        if (type === 'generic') {
+            return this.GenericDialogFormService.open(formConfig, formData);
+        }
+        else if (type === 'attachment') {
+            return this.AttachmentDialogFormService.open();
+        }
+        else {
+            throw new Error ('not implemented for type - ' + type);
+        }
     };
 }

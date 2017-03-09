@@ -1,7 +1,7 @@
-import { FormConfiguration } from '../forms';
-import {Formly} from '../formly/formly';
+import { FormConfiguration } from '../../forms';
+import {Formly} from '../../formly/formly';
 
-export class DialogFormController implements ng.IComponentController {
+export class GenericDialogFormController implements ng.IComponentController {
 
     public formConfig: FormConfiguration;
     public formFields: Formly.IFieldArray;

@@ -119,8 +119,12 @@ export class DataGridService implements IDataGridService {
             let label: string = this.getTranslatedValue(option.buttonLabel);
             template = template + ' <md-button class="md-primary md-raised" ng-click="grid.appScope.' +
                                     option.action + '()" aria-label=' +
-                                    label + '> ' +
-                                    label + '</md-button> ';
+                                    label;
+            if (option.visibleFn !== undefined) {
+                template = template + ' ng-show="grid.appScope.' + option.visibleFn + '()"';
+            }
+
+            template = template + '>' + label + '</md-button> ';
         });
         return template + '</div>';
      };
