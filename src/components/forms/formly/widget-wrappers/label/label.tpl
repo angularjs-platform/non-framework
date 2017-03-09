@@ -1,2 +1,2 @@
-<label>{{to.label}}</label>
+<label translate>{{to.label}}</label>
 <formly-transclude></formly-transclude>

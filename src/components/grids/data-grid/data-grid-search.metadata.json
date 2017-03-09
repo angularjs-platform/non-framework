@@ -1,7 +1,7 @@
 {
     "wrapper": "fieldset",
     "templateOptions": {
-        "label": "SEARCH_OPTIONS"
+        "label": "LIST.SEARCH_OPTIONS"
     },
     "elementAttributes": {
         "layout": "column"
@@ -15,22 +15,16 @@
                 {
                     "type": "submitbutton",
                     "templateOptions": {
-                        "label": "SEARCH",
+                        "label": "BUTTON.SEARCH",
                         "class": "md-primary md-hue-3"
-                    },
-                    "expressionProperties": {
-                        "templateOptions.label": "'SEARCH' | translate"
                     }
                 },
                 {
                     "type": "button",
                     "templateOptions": {
-                        "label": "RESET",
+                        "label": "BUTTON.RESET",
                         "class": "md-primary",
                         "onclick": "formState.viewManager.resetSearch()"
-                    },
-                    "expressionProperties": {
-                        "templateOptions.label": "'RESET' | translate"
                     }
                 }
             ]
