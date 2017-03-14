@@ -1,4 +1,4 @@
-import { IDataGridService, GridColumn, ButtonOptions, GridOptions, PageSearchQuery, GridDataSource } from './data-grid';
+import { IDataGridService, GridColumn, ButtonOptions, GridOptions, PageSearchQuery, GridDataSource, GridStateConfig, ButtonServiceConfig } from './data-grid';
 
 export class DataGridService implements IDataGridService {
 
@@ -53,9 +53,14 @@ export class DataGridService implements IDataGridService {
             options.enableRowSelection = true;
             options.enableFullRowSelection = true;
             options.multiSelect = false;
+
+            let selectAction: string = 'selectRow';
+            if (options.selectAction !== undefined) {
+                selectAction = options.selectAction;
+            }
             options.onRegisterApi = (gridApi: any): void => {
                 // TODO: Seems wierd to pass null but it needs a scope.. passing 'this' is throwing error... :(
-                gridApi.selection.on.rowSelectionChanged(null, options.appScopeProvider[options.selectAction]);
+                gridApi.selection.on.rowSelectionChanged(null, options.appScopeProvider[selectAction]);
             };
         }
 
@@ -103,8 +108,30 @@ export class DataGridService implements IDataGridService {
                 icon = 'magnify';
             }
 
-            template = template + ' <md-button class="md-icon-button" ng-click="grid.appScope.' +
-                                    option.action + '(row.entity)"> ' +
+            let clickAction: any;
+
+            if (option.action !== undefined) {
+                clickAction = '"grid.appScope.' + option.action + '(row.entity)"';
+            }
+            else if (option.stateConfig !== undefined) {
+                let stateConfig: GridStateConfig = option.stateConfig;
+                clickAction = '"grid.appScope.triggerStateChange(\'' +
+                        stateConfig.state + '\',\'' +
+                        stateConfig.param + '\',\'' +
+                        stateConfig.value + '\',' +
+                        'row.entity)"';
+            }
+            else if (option.serviceConfig !== undefined) {
+                let serviceConfig: ButtonServiceConfig = option.serviceConfig;
+                clickAction = '"grid.appScope.triggerService(\'' +
+                        serviceConfig.name + '\',\'' +
+                        serviceConfig.method + '\',\'' +
+                        serviceConfig.value + '\',\'' +
+                        serviceConfig.successLabel + '\',' +
+                        'row.entity)"';
+            }
+
+            template = template + ' <md-button class="md-icon-button" ng-click=' + clickAction + '> ' +
                                     '<md-icon md-svg-icon="' + icon + '" class="icon" aria-label=' +
                                     this.getTranslatedValue(option.buttonLabel) + '></md-icon></md-button> ';
         });
