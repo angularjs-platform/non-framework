@@ -16,8 +16,10 @@ export interface GridOptions extends uiGrid.IGridOptions {
     title?: string;
     gridType?: 'selectable';
     selectAction?: string;
+    selectConfig?: GridStateConfig;
     searchOptions?: [Object];
     footerButtons?: ButtonOptions[];
+    configData?: Object;
 }
 
 export interface GridColumn extends uiGrid.IColumnDef {
@@ -26,13 +28,29 @@ export interface GridColumn extends uiGrid.IColumnDef {
     options?: ButtonOptions[];
 }
 
+export type GridStateConfig = {
+    state?: string;
+    param?: string;
+    value?: string;
+    dynamic?: boolean;
+    configName?: string;
+}
+
+export type ButtonServiceConfig = {
+    name?: string;
+    method?: string;
+    value?: string;
+    successLabel?: string;
+}
+
 export type ButtonOptions = {
-    action: string;
     buttonLabel: string;
+    action?: string;
     type?: string;
     icon?: string;
-    useGridCtrl?: boolean;
     visibleFn?: string;
+    stateConfig?: GridStateConfig;
+    serviceConfig?: ButtonServiceConfig;
 }
 
 export type PaginationOptions = {
