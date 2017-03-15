@@ -33,8 +33,6 @@ export class LeanScrollProvider implements ng.IServiceProvider {
             scrollYMarginOffset   : 0,
             stopPropagationOnClick: true
         };
-
-
     }
 
     public $get = (): ILeanScrollService => {
