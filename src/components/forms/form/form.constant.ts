@@ -2,6 +2,6 @@ import { IFormDisplayState } from './form';
 
 export const FormDisplayState: IFormDisplayState = {
     create: 'create',
-    update: 'update',
+    edit: 'edit',
     view: 'view'
 };

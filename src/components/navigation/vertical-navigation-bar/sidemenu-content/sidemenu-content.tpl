@@ -3,7 +3,7 @@
         <div layout="row">
             <md-icon ng-if="$ctrl.svgIcon" md-svg-icon="$ctrl.svgIcon"></md-icon>
             <md-icon ng-if="$ctrl.icon">{{ $ctrl.icon }}</md-icon>
-            <span flex>{{ $ctrl.heading }}</span>
+            <span flex>{{ $ctrl.heading | translate}}</span>
             <md-icon ng-if="$ctrl.arrow" md-svg-icon="chevron-down"></md-icon>
         </div>
     </md-button>

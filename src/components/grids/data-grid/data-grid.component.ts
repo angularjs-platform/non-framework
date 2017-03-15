@@ -9,7 +9,8 @@ export class DataGridComponent implements ng.IComponentOptions {
     constructor() {
         this.bindings = {
             provider: '=',
-            source: '='
+            source: '=',
+            title: '@'
         };
 
         this.controller = DataGridController;

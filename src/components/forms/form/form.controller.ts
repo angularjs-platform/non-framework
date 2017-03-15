@@ -63,9 +63,9 @@ export class FormController implements ng.IComponentController {
                     // Show Dialog error message
                     this.$mdDialog.show(
                         this.$mdDialog.alert()
+                            .multiple(true)
                             .title(this.$translate.instant('FORM.CORRECT_FORM_INPUT_ERRORS'))
                             .ok(this.$translate.instant('BUTTON.OK')))
-                            .multiple(true)
                             .then((): void => {
                                 // Set Focus on first invalid field
                                 this.focusOnFirstInvalidElement();
@@ -103,11 +103,11 @@ export class FormController implements ng.IComponentController {
         }
         else {
             this.$mdDialog.show(this.$mdDialog.confirm()
+                .multiple(true)
                 .title(this.$translate.instant('FORM.FORM_CONFIRMATION_DIALOG_TITLE_MESSAGE'))
                 .textContent(this.$translate.instant(actionDialogSubjectLocaleKey))
                 .ok(this.$translate.instant('BUTTON.OK'))
                 .cancel(this.$translate.instant('BUTTON.CANCEL')))
-                .multiple(true)
                 .then((): void => {
                     this.submitForm($event);
                 }, (): void => {
@@ -131,7 +131,14 @@ export class FormController implements ng.IComponentController {
         }
         // Else call the endpoint using the GenericFormSubmissionService
         else if (actionConfig.endpointURL && actionConfig.nextState) {
-            this.GenericFormSubmissionService.submit(actionConfig.endpointURL, this.configuration.model)
+            let payload: {} = this.configuration.model;
+
+            // When payload is more than just the plain model, use this to configure the payload
+            if (actionConfig.createPayloadMethod) {
+                payload = viewManager[actionConfig.createPayloadMethod](this.form, this.configuration.model);
+            }
+
+            this.GenericFormSubmissionService.submit(actionConfig.endpointURL, payload)
                 .then(
                     // Success
                     () => this.$state.go(actionConfig.nextState),
