@@ -1,7 +1,6 @@
 export interface IDataGridService {
     transformGridOptions(options: GridOptions): void;
     transformColumns(columns: GridColumn[]): void;
-    getTranslatedValue(translationKey: string): string;
     loadData(url: string, options: PageSearchQuery): ng.IPromise<any>;
     getDataSourceObject(url:string, additionalOptions?:GridOptions): GridDataSource;
 }
@@ -23,7 +22,6 @@ export interface GridOptions extends uiGrid.IGridOptions {
 }
 
 export interface GridColumn extends uiGrid.IColumnDef {
-    labelKey: string;
     type?: string;
     options?: ButtonOptions[];
 }
