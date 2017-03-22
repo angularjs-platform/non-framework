@@ -2,7 +2,7 @@ import {Formly} from '../formly/formly';
 
 export type FormConfiguration = {
     options?: IFormlyOptions;
-    model?: Object;
+    model?: any;
     fields: Formly.IFieldArray;
 }
 
