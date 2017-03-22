@@ -4,39 +4,39 @@
     "footerButtons": [
         {
             "action" : "add",
-            "buttonLabel" : "ADD",
+            "buttonLabel" : "BUTTON.ADD",
             "visibleFn": "showAddButton"
         }
     ],
     "actionColumnWithEdit" : {
         "name" : "Actions",
-        "labelKey" : "ACTIONS",
+        "displayName" : "COMMON.ACTIONS",
         "visible" : true,
         "type" : "button",
         "options" :
         [
             {
                 "action" : "edit",
-                "buttonLabel" : "EDIT",
+                "buttonLabel" : "BUTTON.EDIT",
                 "type" : "edit"
             },
             {
                 "action" : "delete",
-                "buttonLabel" : "DELETE",
+                "buttonLabel" : "BUTTON.DELETE",
                 "type" : "delete"
             }
         ]
     },
     "actionColumnWithoutEdit" : {
         "name" : "Actions",
-        "labelKey" : "ACTIONS",
+        "displayName" : "COMMON.ACTIONS",
         "visible" : true,
         "type" : "button",
         "options" :
         [
             {
                 "action" : "delete",
-                "buttonLabel" : "DELETE",
+                "buttonLabel" : "BUTTON.DELETE",
                 "type" : "delete"
             }
         ]

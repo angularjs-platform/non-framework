@@ -13,6 +13,7 @@ export class DataGridController implements ng.IComponentController {
     private pageSearchQuery: PageSearchQuery;
 
     constructor(
+        private $translate: ng.translate.ITranslateService,
         private $mdToast: ng.material.IToastService,
         private DataGridService: IDataGridService,
         private $state: ng.ui.IStateService,
@@ -72,7 +73,7 @@ export class DataGridController implements ng.IComponentController {
         const service: any = this.$injector.get(name);
 
         service[method](object[value]).then(
-            () => this.$mdToast.show(this.$mdToast.simple().textContent(this.DataGridService.getTranslatedValue(successLabel))));
+            () => this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant(successLabel))));
     };
 
     public selectRow = (object: any): void => {
@@ -129,7 +130,7 @@ export class DataGridController implements ng.IComponentController {
 
         // Get the title for the page
         if (this.options.title) {
-            this.title = this.DataGridService.getTranslatedValue(this.options.title);
+            this.title = this.options.title;
         }
 
         // Transform column defs in ui-grid specific
