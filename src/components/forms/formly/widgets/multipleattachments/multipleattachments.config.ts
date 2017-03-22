@@ -14,16 +14,12 @@ export class FormlyConfig {
                         columnDefs : [
                             {
                                 name : 'name',
-                                labelKey : 'NAME',
-                                visible : true,
-                                type : null,
-                                options : null
+                                displayName : 'ATTACHMENTS.FILENAME',
+                                visible : true
                             },
                             {
                                 name : 'attachmentId',
-                                visible : false,
-                                type : null,
-                                options : null
+                                visible : false
                             }
                         ]
                     }
