@@ -9,23 +9,18 @@ export class DataGridService implements IDataGridService {
     };
 
     constructor(
-        private $translate: ng.translate.ITranslateService,
         private uiGridConstants: uiGrid.IUiGridConstants,
         private $http: ng.IHttpService
     ) {
         'ngInject';
     }
 
-    public getTranslatedValue = (translationKey: string) => {
-        return this.$translate.instant(translationKey);
-    };
-
     public transformColumns = (columns: GridColumn[]): void => {
 
         columns.forEach((column: GridColumn): void => {
 
             // Get translated name
-            column.displayName = this.getTranslatedValue(column.labelKey);
+            column.headerCellFilter = 'translate';
 
             // Remove the hiding option from column menu
             column.enableHiding = false;
@@ -132,8 +127,8 @@ export class DataGridService implements IDataGridService {
             }
 
             template = template + ' <md-button class="md-icon-button" ng-click=' + clickAction + '> ' +
-                                    '<md-icon md-svg-icon="' + icon + '" class="icon" aria-label=' +
-                                    this.getTranslatedValue(option.buttonLabel) + '></md-icon></md-button> ';
+                                    '<md-icon md-svg-icon="' + icon + '" class="icon" aria-label="{{\'' +
+                                    option.buttonLabel + '\' | translate }}"></md-icon></md-button> ';
         });
         return template;
 
@@ -143,15 +138,13 @@ export class DataGridService implements IDataGridService {
         let template: string = '<div layout="row" layout-align="end top">';
 
         buttonOptions.forEach((option: any): any => {
-            let label: string = this.getTranslatedValue(option.buttonLabel);
             template = template + ' <md-button class="md-primary md-raised" ng-click="grid.appScope.' +
-                                    option.action + '()" aria-label=' +
-                                    label;
+                                    option.action + '()"';
             if (option.visibleFn !== undefined) {
                 template = template + ' ng-show="grid.appScope.' + option.visibleFn + '()"';
             }
 
-            template = template + '>' + label + '</md-button> ';
+            template = template + '>{{"' + option.buttonLabel + '" | translate }}</md-button> ';
         });
         return template + '</div>';
      };

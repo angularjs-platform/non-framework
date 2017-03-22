@@ -9,7 +9,7 @@
         </form>
     </md-dialog-content>
     <md-dialog-actions>
-        <md-button ng-click="vm.saveData()" class="md-primary" translate>BUTTON.SAVE</md-button>
-        <md-button ng-click="vm.closeDialog()" class="md-primary" translate>BUTTON.CANCEL</md-button>
+        <md-button ng-click="vm.saveData()" class="md-primary">{{ 'BUTTON.SAVE' | translate}}</md-button>
+        <md-button ng-click="vm.closeDialog()" class="md-primary">{{ 'BUTTON.CANCEL' | translate}}</md-button>
     </md-dialog-actions>
 </md-dialog>
