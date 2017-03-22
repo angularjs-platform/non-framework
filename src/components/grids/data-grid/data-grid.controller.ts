@@ -128,7 +128,9 @@ export class DataGridController implements ng.IComponentController {
         this.DataGridService.transformGridOptions(this.options);
 
         // Get the title for the page
-        this.title = this.DataGridService.getTranslatedValue(this.options.title);
+        if (this.options.title) {
+            this.title = this.DataGridService.getTranslatedValue(this.options.title);
+        }
 
         // Transform column defs in ui-grid specific
         if (this.options.columnDefs) {

@@ -8,7 +8,7 @@ export type FormConfiguration = {
 
 export interface IFormDisplayState {
     create: string;
-    update: string;
+    edit: string;
     view: string;
 }
 
@@ -25,6 +25,7 @@ export interface IActionConfig {
     action : string;
     forwardToMethod?: string;
     endpointURL?: string;
+    createPayloadMethod?: string;
     nextState?: string;
     hideConfirmation?: boolean;
     customConfirmation?: string;
