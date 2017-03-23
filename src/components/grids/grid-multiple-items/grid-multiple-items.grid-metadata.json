@@ -10,7 +10,7 @@
     ],
     "actionColumnWithEdit" : {
         "name" : "Actions",
-        "displayName" : "COMMON.ACTIONS",
+        "displayName" : "GRID.ACTIONS",
         "visible" : true,
         "type" : "button",
         "options" :
@@ -29,7 +29,7 @@
     },
     "actionColumnWithoutEdit" : {
         "name" : "Actions",
-        "displayName" : "COMMON.ACTIONS",
+        "displayName" : "GRID.ACTIONS",
         "visible" : true,
         "type" : "button",
         "options" :
