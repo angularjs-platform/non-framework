@@ -1,7 +1,7 @@
 {
     "wrapper": "fieldset",
     "templateOptions": {
-        "label": "LIST.SEARCH_OPTIONS"
+        "label": "GRID.SEARCH_OPTIONS"
     },
     "elementAttributes": {
         "layout": "column"
