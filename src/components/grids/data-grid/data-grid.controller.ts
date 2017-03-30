@@ -53,13 +53,20 @@ export class DataGridController implements ng.IComponentController {
         this.loadGrid();
     }
 
-    public performSearch = (): void => {
-        this.pageSearchQuery.searchOptions = this.searchFormConfiguration.model;
-        this.loadGrid();
+    public performSearch = ($event: any, form: ng.IFormController): void => {
+        this.searchFormConfiguration.options.formState.triggerFormValidation = true;
+        if (form.$valid) {
+            this.pageSearchQuery.searchOptions = this.searchFormConfiguration.model;
+            this.loadGrid();
+        }
+        else {
+            this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant('FORM.CORRECT_FORM_INPUT_ERRORS')));
+        }
     };
 
     public resetSearch = (): void => {
        this.searchFormConfiguration.model = {};
+       this.searchFormConfiguration.options.resetModel();
        this.pageSearchQuery.searchOptions = {};
     };
 

@@ -10,7 +10,6 @@ export class LookupController implements ng.IComponentController {
 
     constructor(
         private DialogGridService: IDialogGridService,
-        private $mdDialog: ng.material.IDialogService,
         private _: _.LoDashStatic
     ) {
         'ngInject';
@@ -18,12 +17,8 @@ export class LookupController implements ng.IComponentController {
     }
 
     public search = () => {
-        this.DialogGridService.open(this.getSourceUrl())
+        this.DialogGridService.open(this.sourceData)
             .then(this.handleDialogClose);
-    };
-
-    private getSourceUrl = (): any => {
-        return this.viewManager[this.sourceData]();
     };
 
     private handleDialogClose = (response: any): any => {
