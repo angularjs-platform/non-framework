@@ -1,6 +1,7 @@
 {
     "DIALOG": {
-        "TITLE": "Title"
+        "TITLE": "Title",
+        "GRID": "Dialog Grid"
     },
     "BUTTON": {
         "ADD": "Add",
@@ -11,7 +12,8 @@
         "VIEW": "View",
         "DELETE": "Delete",
         "SEARCH": "Search",
-        "RESET": "Reset"
+        "RESET": "Reset",
+        "CLOSE": "Close"
     },
     "FORM": {
         "FORM_CONFIRMATION_DIALOG_TITLE_MESSAGE": "Please Confirm!",
