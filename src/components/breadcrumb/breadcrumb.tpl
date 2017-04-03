@@ -1,4 +1,4 @@
-<div class="breadcrumb">
+<div class="breadcrumb" ng-show="steps.length >= 1">
     <a ui-sref="app.home" class="home"><md-icon md-svg-icon="home" class="icon"></md-icon></a>
     <span hide show-gt-sm>
         <a ng-if="steps.length > 6"><md-icon md-svg-icon="dots-horizontal" class="icon"></md-icon></a>
