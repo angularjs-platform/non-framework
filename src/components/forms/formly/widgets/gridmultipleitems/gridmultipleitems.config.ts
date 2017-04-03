@@ -26,7 +26,7 @@ export class FormlyConfig {
 
                 $scope.getCount = (): number => {
                     let modelName: string = $scope.options.key;
-                    if ($scope.model[modelName] !== undefined) {
+                    if ($scope.model[modelName]) {
                         return $scope.model[modelName].length;
                     }
                     else {
