@@ -1,6 +1,5 @@
 {
     "data": "$ctrl.items",
-    "showGridFooter": true,
     "footerButtons": [
         {
             "action" : "add",

@@ -1,4 +1,4 @@
-import { IDataGridService, GridDataSource, PageSearchQuery, GridOptions, GridStateConfig } from './data-grid';
+import { IDataGridService, GridDataSource, PageSearchQuery, GridOptions, GridStateConfig, MultiSelectConfig, ButtonServiceConfig } from './data-grid';
 import { FormConfiguration } from '../../components.model';
 const searchFormFields: any = require('./data-grid-search.metadata.json');
 
@@ -10,6 +10,7 @@ export class DataGridController implements ng.IComponentController {
     public source: GridDataSource;
     public searchFormConfiguration: FormConfiguration;
     public gridProvider: Object;
+    private gridApi: uiGrid.IGridApi;
     private pageSearchQuery: PageSearchQuery;
 
     constructor(
@@ -46,7 +47,8 @@ export class DataGridController implements ng.IComponentController {
         this.gridProvider = {
             triggerStateChange: this.triggerStateChange,
             triggerService: this.triggerService,
-            selectRow: this.selectRow
+            selectRow: this.selectRow,
+            performMultiSelect: this.performMultiSelect
         };
 
         // Load grid
@@ -70,17 +72,17 @@ export class DataGridController implements ng.IComponentController {
        this.pageSearchQuery.searchOptions = {};
     };
 
-    public triggerStateChange = (state: string, param: string, value: string, object: any): void => {
-        let data: any = {};
-        data[param] = object[value];
-        this.$state.go(state, data);
+    public triggerStateChange = (data: string, object: any): void => {
+        let stateConfig: GridStateConfig = this.DataGridService.decodeObjectForJavascript(data);
+        this.changeState(stateConfig.state, stateConfig.param, stateConfig.field, object);
     };
 
-    public triggerService = (name: string, method: string, value: string, successLabel: string, object: any): void => {
-        const service: any = this.$injector.get(name);
+    public triggerService = (data: string, object: any): void => {
+        let serviceConfig: ButtonServiceConfig = this.DataGridService.decodeObjectForJavascript(data);
+        const service: any = this.$injector.get(serviceConfig.name);
 
-        service[method](object[value]).then(
-            () => this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant(successLabel))));
+        service[serviceConfig.method](object[serviceConfig.field]).then(
+            () => this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant(serviceConfig.successLabel))));
     };
 
     public selectRow = (object: any): void => {
@@ -92,8 +94,28 @@ export class DataGridController implements ng.IComponentController {
         else {
             stateName = stateConfig.state;
         }
-        this.triggerStateChange(stateName, stateConfig.param, stateConfig.value, object.entity);
+        this.changeState(stateName, stateConfig.param, stateConfig.field, object.entity);
     };
+
+    public performMultiSelect = (data: string): void => {
+        let config: MultiSelectConfig = this.DataGridService.decodeObjectForJavascript(data);
+        let selectedRows: any = this.gridApi.selection.getSelectedRows();
+        let selectedFields: any = this._.map(selectedRows, config.field);
+        this.DataGridService.submitData(config.url, selectedFields).then(
+            () => {
+            this.$mdToast.show(this.$mdToast.simple().textContent(this.$translate.instant(config.successLabel)));
+            this.loadGrid();
+        }
+        );
+
+    };
+
+    private changeState = (state: string, param: string, field: string, object: any): void => {
+        let data: any = {};
+        data[param] = object[field];
+        this.$state.go(state, data);
+    };
+
 
     private performPagination = (newPage: number, pageSize: number): void => {
         this.pageSearchQuery.paginationOptions.pageNumber = newPage;
@@ -106,6 +128,7 @@ export class DataGridController implements ng.IComponentController {
     };
 
     private populateGrid = (options: GridOptions): void => {
+
         this.options = options;
         this.options.paginationPageSize = this.pageSearchQuery.paginationOptions.pageSize;
 
@@ -129,6 +152,7 @@ export class DataGridController implements ng.IComponentController {
         }
 
         this.options.onRegisterApi = (gridApi: any): void => {
+            this.gridApi = gridApi;
             gridApi.pagination.on.paginationChanged(null, this.performPagination);
         };
 

@@ -1,4 +1,4 @@
-import { IDataGridService, GridColumn, ButtonOptions, GridOptions, PageSearchQuery, GridDataSource, GridStateConfig, ButtonServiceConfig } from './data-grid';
+import { IDataGridService, GridColumn, ButtonOptions, GridOptions, PageSearchQuery, GridDataSource } from './data-grid';
 
 export class DataGridService implements IDataGridService {
 
@@ -59,14 +59,24 @@ export class DataGridService implements IDataGridService {
             };
         }
 
+        if (options.gridType === 'multiSelect') {
+            options.enableRowSelection = true;
+            options.enableRowHeaderSelection = true;
+            options.multiSelect = true;
+        }
+
         if (options.footerButtons && options.footerButtons.length > 0) {
+            options.showGridFooter = true;
             options.gridFooterTemplate = this.buildFooterButtonTemplate(options.footerButtons);
         }
     };
 
     public loadData = (url: string, query: PageSearchQuery): ng.IPromise<any> => {
-
         return this.$http.post(url, {pageSearchQuery: query}).then(this.handleData);
+    };
+
+    public submitData = (url: string, data: any): ng.IPromise<any> => {
+        return this.$http.post(url, {ids: data}).then(this.handleData);
     };
 
     public getDataSourceObject = (url: string, additionalOptions: GridOptions): GridDataSource => {
@@ -78,6 +88,14 @@ export class DataGridService implements IDataGridService {
         }
 
         return dataSource;
+    };
+
+    public escapeObjectForHTML = (data: Object): string => {
+        return encodeURIComponent(JSON.stringify(data));
+    };
+
+    public decodeObjectForJavascript = (data: string): Object => {
+        return JSON.parse(decodeURIComponent(data));
     };
 
     private handleData = (response: any): any => {
@@ -109,21 +127,14 @@ export class DataGridService implements IDataGridService {
                 clickAction = '"grid.appScope.' + option.action + '(row.entity)"';
             }
             else if (option.stateConfig !== undefined) {
-                let stateConfig: GridStateConfig = option.stateConfig;
                 clickAction = '"grid.appScope.triggerStateChange(\'' +
-                        stateConfig.state + '\',\'' +
-                        stateConfig.param + '\',\'' +
-                        stateConfig.value + '\',' +
-                        'row.entity)"';
+                        this.escapeObjectForHTML(option.stateConfig) +
+                        '\', row.entity)"';
             }
             else if (option.serviceConfig !== undefined) {
-                let serviceConfig: ButtonServiceConfig = option.serviceConfig;
                 clickAction = '"grid.appScope.triggerService(\'' +
-                        serviceConfig.name + '\',\'' +
-                        serviceConfig.method + '\',\'' +
-                        serviceConfig.value + '\',\'' +
-                        serviceConfig.successLabel + '\',' +
-                        'row.entity)"';
+                        this.escapeObjectForHTML(option.serviceConfig) +
+                        '\', row.entity)"';
             }
 
             template = template + ' <md-button class="md-icon-button" ng-click=' + clickAction + '> ' +
@@ -137,9 +148,16 @@ export class DataGridService implements IDataGridService {
     private buildFooterButtonTemplate = (buttonOptions: ButtonOptions[]): string => {
         let template: string = '<div layout="row" layout-align="end top">';
 
-        buttonOptions.forEach((option: any): any => {
-            template = template + ' <md-button class="md-primary md-raised" ng-click="grid.appScope.' +
-                                    option.action + '()"';
+        buttonOptions.forEach((option: ButtonOptions): any => {
+            let clickAction: any = '"grid.appScope.' + option.action + '()"';
+
+            if (option.multiSelectConfig) {
+                clickAction = '"grid.appScope.performMultiSelect(\''
+                    + this.escapeObjectForHTML(option.multiSelectConfig)
+                    + '\')"';
+            }
+
+            template = template + ' <md-button class="md-primary md-raised" ng-click=' + clickAction;
             if (option.visibleFn !== undefined) {
                 template = template + ' ng-show="grid.appScope.' + option.visibleFn + '()"';
             }
