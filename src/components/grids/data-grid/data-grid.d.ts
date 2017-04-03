@@ -2,7 +2,10 @@ export interface IDataGridService {
     transformGridOptions(options: GridOptions): void;
     transformColumns(columns: GridColumn[]): void;
     loadData(url: string, options: PageSearchQuery): ng.IPromise<any>;
+    submitData(url: string, data: any): ng.IPromise<any>;
     getDataSourceObject(url:string, additionalOptions?:GridOptions): GridDataSource;
+    escapeObjectForHTML(data: Object): string;
+    decodeObjectForJavascript(data: string): Object;
 }
 
 export interface GridDataSource {
@@ -13,7 +16,7 @@ export interface GridDataSource {
 export interface GridOptions extends uiGrid.IGridOptions {
     columnDefs?: GridColumn[];
     title?: string;
-    gridType?: 'selectable';
+    gridType?: 'selectable' | 'multiSelect';
     selectAction?: string;
     selectConfig?: GridStateConfig;
     searchOptions?: [Object];
@@ -29,7 +32,7 @@ export interface GridColumn extends uiGrid.IColumnDef {
 export type GridStateConfig = {
     state?: string;
     param?: string;
-    value?: string;
+    field?: string;
     dynamic?: boolean;
     configName?: string;
 }
@@ -37,7 +40,13 @@ export type GridStateConfig = {
 export type ButtonServiceConfig = {
     name?: string;
     method?: string;
-    value?: string;
+    field?: string;
+    successLabel?: string;
+}
+
+export type MultiSelectConfig = {
+    url?: string;
+    field?: string;
     successLabel?: string;
 }
 
@@ -49,6 +58,7 @@ export type ButtonOptions = {
     visibleFn?: string;
     stateConfig?: GridStateConfig;
     serviceConfig?: ButtonServiceConfig;
+    multiSelectConfig?: MultiSelectConfig;
 }
 
 export type PaginationOptions = {
