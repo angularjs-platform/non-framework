@@ -1,5 +1,7 @@
 non-page-content-wrapper,
 .non-page-content-wrapper {
+    background: $card-bg;
+
     .page-content {
         background: $card-bg;
         padding: 20px;

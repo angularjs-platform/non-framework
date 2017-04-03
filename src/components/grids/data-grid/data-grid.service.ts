@@ -50,7 +50,7 @@ export class DataGridService implements IDataGridService {
             options.multiSelect = false;
 
             let selectAction: string = 'selectRow';
-            if (options.selectAction !== undefined) {
+            if (options.selectAction) {
                 selectAction = options.selectAction;
             }
             options.onRegisterApi = (gridApi: any): void => {
@@ -83,7 +83,7 @@ export class DataGridService implements IDataGridService {
         let dataSource: GridDataSource = {};
         dataSource.url = url;
 
-        if (additionalOptions !== undefined) {
+        if (additionalOptions) {
             dataSource.additionalOptions = additionalOptions;
         }
 
@@ -109,29 +109,29 @@ export class DataGridService implements IDataGridService {
 
             let icon: any = option.icon;
 
-            if (icon === undefined) {
+            if (!icon) {
                 let type: any = option.type;
 
-                if (type !== undefined) {
+                if (type) {
                     icon = this.iconsByType[type];
                 }
             }
 
-            if (icon === undefined) {
+            if (!icon) {
                 icon = 'magnify';
             }
 
             let clickAction: any;
 
-            if (option.action !== undefined) {
+            if (option.action) {
                 clickAction = '"grid.appScope.' + option.action + '(row.entity)"';
             }
-            else if (option.stateConfig !== undefined) {
+            else if (option.stateConfig) {
                 clickAction = '"grid.appScope.triggerStateChange(\'' +
                         this.escapeObjectForHTML(option.stateConfig) +
                         '\', row.entity)"';
             }
-            else if (option.serviceConfig !== undefined) {
+            else if (option.serviceConfig) {
                 clickAction = '"grid.appScope.triggerService(\'' +
                         this.escapeObjectForHTML(option.serviceConfig) +
                         '\', row.entity)"';
@@ -158,7 +158,7 @@ export class DataGridService implements IDataGridService {
             }
 
             template = template + ' <md-button class="md-primary md-raised" ng-click=' + clickAction;
-            if (option.visibleFn !== undefined) {
+            if (option.visibleFn) {
                 template = template + ' ng-show="grid.appScope.' + option.visibleFn + '()"';
             }
 

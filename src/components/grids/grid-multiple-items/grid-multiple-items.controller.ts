@@ -59,7 +59,7 @@ export class GridMultipleItemsController implements ng.IComponentController {
     }
 
     public showAddButton = (): boolean => {
-        if (this.maxItems !== undefined && this.items !== undefined && this.items.length >= this.maxItems) {
+        if (this.maxItems && this.items && this.items.length >= this.maxItems) {
             return false;
         }
         return true;
