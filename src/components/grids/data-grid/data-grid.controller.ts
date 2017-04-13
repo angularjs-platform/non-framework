@@ -132,7 +132,7 @@ export class DataGridController implements ng.IComponentController {
         this.options = options;
         this.options.paginationPageSize = this.pageSearchQuery.paginationOptions.pageSize;
 
-        if (this.provider !== undefined) {
+        if (this.provider) {
             this._.assign(this.gridProvider, this.provider);
         }
         this.options.appScopeProvider = this.gridProvider;

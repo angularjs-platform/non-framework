@@ -39,7 +39,7 @@ export class LookupController implements ng.IComponentController {
         while (tokens.length) {
             let token: string = tokens.shift();
             if (tokens.length > 0) {
-                if (copy[token] === undefined) {
+                if (!copy[token]) {
                     copy[token] = {};
                 }
                 copy = copy[token];
