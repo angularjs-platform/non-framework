@@ -9,7 +9,9 @@ import lookup from './lookup/lookup.module';
 import breadcrumb from './breadcrumb/breadcrumb.module';
 import pageContentWrapper from './page-content-wrapper/page-content-wrapper.module';
 import grids from './grids/grids.module';
+import dashboard from './dashboard/dashboard.module';
 
-angular.module(moduleName, [navigation, grids, forms, multiSelect, lookup, breadcrumb, pageContentWrapper]);
+angular.module(moduleName, [navigation, grids, forms, multiSelect, lookup,
+                    breadcrumb, pageContentWrapper, dashboard]);
 
 export default moduleName;
